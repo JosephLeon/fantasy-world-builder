@@ -5,6 +5,8 @@ module ApplicationHelper
     base_title = "Fantasy World Builder"
     if page_title == base_title
       base_title
+    elsif page_title.empty?
+      base_title
     else
       "#{base_title} | #{page_title}"
     end
