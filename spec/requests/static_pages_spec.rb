@@ -13,6 +13,7 @@ describe "StaticPages" do
   describe "Help Page" do
     before { visit help_path }
     it { should have_selector('h1', :text => 'Help Page') }
+    it { should have_title('Fantasy World Builder Help Page') }
   end
 
 end
