@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-WorldBuilder::Application.config.secret_key_base = '980842f2ff2703e59c8cbd49e8c9bfb7f84f3ec4e291c550b25c5ab8bda949ae5a808d078a2e6931fec67aa464c22df577493ecf868f4a435c9ffe41ceae0c01'
+
+require 'securerandom'
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+WorldBuilder::Application.config.secret_key_base = secure_token
