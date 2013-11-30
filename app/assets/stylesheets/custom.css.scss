@@ -1,6 +1,15 @@
 @import "bootstrap";
 
-/* universal */
+// mixins & variables
+@mixin webkitmarginreset($webkitmargin) {
+  -webkit-margin-before: $webkitmargin;
+  -webkit-margin-after: $webkitmargin;
+  -webkit-margin-start: $webkitmargin;
+  -webkit-margin-end: $webkitmargin;
+}
+$almostblack: #999;
+
+// universal
 html {
   overflow-y: scroll;
 }
@@ -12,12 +21,6 @@ section {
 }
 textarea {
   resize: vertical;
-}
-.center {
-  text-align: center;
-}
-.center h1 {
-  margin-bottom: 10px;
 }
 
 /* typography */
@@ -36,7 +39,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #999;
+  color: $almostblack;
 }
 p {
   font-size: 1.1em; line-height: 1.7em;
@@ -44,19 +47,21 @@ p {
 
 /* header */
 #logo {
+  @include webkitmarginreset(0);
+  margin: 0;
+  font-size: 26px;
+  line-height: 26px;
+  font-weight: normal;
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
+  padding-top: 8px;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  line-height: 1;
-}
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
+  a {
+    color: #fff;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 /* footer */
