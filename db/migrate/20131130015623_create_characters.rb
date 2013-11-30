@@ -2,8 +2,7 @@ class CreateCharacters < ActiveRecord::Migration
   def change
     create_table :characters do |t|
       t.string :name
-      t.int :intelligence
-      t.string :eger
+      t.integer :intelligence
       t.integer :patience
       t.integer :charisma
       t.integer :strength
