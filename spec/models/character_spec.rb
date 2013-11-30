@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Character do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before { @character = Character.new(name: "Example User", intelligence: "21") }
+  subject { @character }
+  it { should respond_to(:name) }
+  it { should respond_to(:intelligence) }
 end
