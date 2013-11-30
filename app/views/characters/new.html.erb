@@ -1,3 +1,47 @@
 <% @title = "Character Creation" %>
 <h1><%= @title %></h1>
 <p>Begin creating your character!</p>
+
+<div class="row">
+  <div class="span6">
+    <%= form_for(@character) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <h3>Stats</h3>
+
+      <%= f.label :intelligence %>
+      <%= f.text_field :intelligence %>
+      <%= f.label :patience %>
+      <%= f.text_field :patience %>
+      <%= f.label :charisma %>
+      <%= f.text_field :charisma %>
+      <%= f.label :strength %>
+      <%= f.text_field :strength %>
+      <%= f.label :endurance %>
+      <%= f.text_field :endurance %>
+      <%= f.label :agility %>
+      <%= f.text_field :agility %>
+      <%= f.label :constitution %>
+      <%= f.text_field :constitution %>
+
+      <h3>Appearance</h3>
+
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+      <%= f.label :history %>
+      <%= f.text_area :history %>
+
+      <h3>Gear</h3>
+
+      <%= f.label :gold %>
+      <%= f.text_field :gold %>
+      <%= f.label :weapon %>
+      <%= f.text_field :weapon %>
+
+      <%= f.submit "Create character", class: "btn btn-large btn-primary" %>
+
+    <% end %>
+  </div>
+</div>
