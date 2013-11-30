@@ -2,8 +2,8 @@ WorldBuilder::Application.routes.draw do
 
   resources :characters
   root 'static_pages#home'
-  match '/',          to: 'static_pages#home',    via: 'get'
-  match '/help',      to: 'static_pages#help',    via: 'get'
+  match '/',              to: 'static_pages#home',    via: 'get'
+  match '/help',          to: 'static_pages#help',    via: 'get'
   match '/new-character', to: 'characters#new',       via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
