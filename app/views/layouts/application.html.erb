@@ -10,8 +10,15 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
-      <%= yield %>
+      <h1><%= @title %></h1>
+      <div id="content">
+        <article>
+          <%= yield %>
+        </article>
+        <%= render 'layouts/aside' %>
+      </div>
       <%= render 'layouts/footer' %>
+      </div>
     </div>
   </body>
 </html>
