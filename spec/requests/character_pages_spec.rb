@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe "CharacterPages" do
-  describe "GET /character_pages" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get character_pages_index_path
-      response.status.should be(200)
-    end
+
+  subject { page }
+
+  describe "Character Creation Page" do
+    before { visit new_path }
+    it { should have_selector('h1', :text => 'Character Creation') }
+    it { should have_title('Character Creation') }
   end
+
 end
