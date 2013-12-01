@@ -46,6 +46,7 @@ $columnTotal: 12;
 $almostblack: #161616;
 $paper: #ede0ce;
 $brown: #554125;
+$darkpaper: #b8ada0;
 
 // typography
 h1, h2, h3, h4, h5, h6 {
@@ -87,12 +88,11 @@ body {
   padding-top: 90px;
 }
 .container {
-  width: 100%;
   max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
 }
-#content {
+#content, footer {
   @include clear;
   a {
     font-family: 'Give You Glory', cursive;
@@ -117,13 +117,11 @@ body {
   padding-left: 20px;
 }
 article {
-  float: left;
-  width: 75%;
+  @include grid(9,1);
   padding-right: 20px;
 }
 aside {
-  float: left;
-  width: 20%;
+  @include grid(3,10);
   padding-left: 20px;
 }
 
@@ -153,14 +151,16 @@ header {
   }
   nav {
     float: right;
-    width: 215px;
     text-transform: uppercase;
     font-size: 16px;
+    ul {
+      float: right;
+    }
     li {
       float: left;
-      a {
-        padding: 10px;
-      }
+    }
+    a {
+      padding: 10px;
     }
   }
   .container {
@@ -171,26 +171,20 @@ header {
 // footer
 footer {
   margin-top: 45px;
-  padding-top: 5px;
+  padding: 10px 0;
   border-top: 1px solid $brown;
-  color: #999;
-}
-footer a {
-  color: #555;
-}
-footer a:hover {
-  color: #222;
-}
-footer small {
-  float: left;
-}
-footer ul {
-  float: right;
-  list-style: none;
-}
-footer ul li {
-  float: left;
-  margin-left: 10px;
+  @include clear;
+  p {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+  }
+  li {
+    float: left;
+    margin-left: 10px;
+  }
 }
 
 // forms
@@ -208,7 +202,6 @@ select:-moz-focusring {
 select.form-select {
   // remove firefox select arrow
   @include removeFireFoxSelectArrow;
-  background: #f9f3e9 url(../images/select-arrow.jpg) center right no-repeat;
 }
 input, textarea, select, .uneditable-input {
   width: 100%;
@@ -217,12 +210,22 @@ input, textarea, select, .uneditable-input {
   padding: 8px;
   background: none;
   border: 0;
-  border: 1px solid #b8ada0;
+  border: 1px solid $darkpaper;
   cursor: auto;
   font-family: 'Rock Salt', cursive;
   font-size: 20px;
 }
 .form-row {
   @include clear;
+}
+table {
+  width: 100%;
+}
+td {
+  padding: 5px;
+  border: 1px solid $darkpaper;
+}
+th {
+  text-align: left;
 }
 
