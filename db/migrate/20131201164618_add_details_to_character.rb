@@ -3,7 +3,7 @@ class AddDetailsToCharacter < ActiveRecord::Migration
     add_column :characters, :health, :integer
     add_column :characters, :armor, :integer
     add_column :characters, :level, :integer
-    add_column :characters, :class, :string
+    add_column :characters, :career, :string
     add_column :characters, :attack, :integer
     add_column :characters, :defense, :integer
     add_column :characters, :perception, :integer

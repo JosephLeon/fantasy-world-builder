@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20131201164618) do
     t.integer  "health"
     t.integer  "armor"
     t.integer  "level"
-    t.string   "class"
+    t.string   "career"
     t.integer  "attack"
     t.integer  "defense"
     t.integer  "perception"
