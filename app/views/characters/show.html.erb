@@ -1,20 +1,34 @@
 <% @title = @character.name %>
 
-<p>Name: <%= @character.name %></p>
+<p>Career/Class: <%= @character.career %></p>
+<p>Level: <%= @character.level %></p>
+<p>Race: <%= @character.race %></p>
+<p>Gold: <%= @character.gold %></p>
 
 <h3>Stats</h3>
 <p>Intelligence: <%= @character.intelligence %></p>
 <p>Patience: <%= @character.patience %></p>
+<p>Perception: <%= @character.perception %></p>
 <p>Charisma: <%= @character.charisma %></p>
 <p>Strength: <%= @character.strength %></p>
 <p>Endurance: <%= @character.endurance %></p>
 <p>Agility: <%= @character.agility %></p>
 <p>Constituion: <%= @character.constitution %></p>
 
+<h3>Combat</h3>
+<p>Attack: <%= @character.attack %></p>
+<p>Defense: <%= @character.defense %></p>
+<p>Armor: <%= @character.armor %></p>
+<p>Weapon: <%= @character.weapon %></p>
+
+<h3>Skills and Abilities</h3>
+<p>Skills: <%= @character.skills %></p>
+<p>Abilities: <%= @character.abilities %></p>
+<p>Spells: <%= @character.spells %></p>
+<p>Powers: <%= @character.powers %></p>
+<p>Languages: <%= @character.languages %></p>
+
 <h3>Description/History</h3>
 <p>Description: <%= @character.description %></p>
 <p>History: <%= @character.history %></p>
-
-<h3>Gear</h3>
-<p>Gold: <%= @character.gold %></p>
-<p>Weapon: <%= @character.weapon %></p>
+<p>Notes: <%= @character.notes %></p>
