@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131130015623) do
+ActiveRecord::Schema.define(version: 20131201164618) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
@@ -28,6 +28,28 @@ ActiveRecord::Schema.define(version: 20131130015623) do
     t.text     "history"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "health"
+    t.integer  "armor"
+    t.integer  "level"
+    t.string   "class"
+    t.integer  "attack"
+    t.integer  "defense"
+    t.integer  "perception"
+    t.integer  "weight"
+    t.integer  "weight_penalty"
+    t.string   "race"
+    t.string   "clan"
+    t.text     "spells"
+    t.text     "abilities"
+    t.text     "skills"
+    t.text     "powers"
+    t.text     "languages"
+    t.integer  "magic_save"
+    t.integer  "mind_save"
+    t.integer  "weather_save"
+    t.integer  "poison_save"
+    t.integer  "force_save"
+    t.text     "notes"
   end
 
 end

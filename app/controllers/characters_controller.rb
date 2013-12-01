@@ -8,6 +8,13 @@ class CharactersController < ApplicationController
     @character = Character.new
   end
 
+  def destroy
+    @character = Character.find(params[:id])
+    @character.destroy
+
+    redirect_to action: :index
+  end
+
   def create
     @character = Character.new(character_params)
     if @character.save
