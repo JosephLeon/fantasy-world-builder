@@ -4,9 +4,24 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:none;}table{border-collapse:collapse;border-spacing:0;}
 
 // fonts
-@import url('http://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic,700|Rock+Salt');
+@import url('http://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic,700|Rock+Salt|Give+You+Glory');
 
 // mixins & variables
+$columnTotal: 12;
+@mixin grid($columns,$start) {
+  $columnWidth: $columns / $columnTotal;
+  $startPositionLeft: ($start - 1) / $columnTotal;
+  $startPositionRight: ((-$startPositionLeft * 100) - ($columnWidth * 100)) ;
+  float: left;
+  width: percentage($columnWidth);
+  margin-left: percentage($startPositionLeft);
+  margin-right: percentage($startPositionRight);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
 @mixin webkitmarginreset($webkitmargin) {
   -webkit-margin-before: $webkitmargin;
   -webkit-margin-after: $webkitmargin;
@@ -79,14 +94,37 @@ body {
 }
 #content {
   @include clear;
+  a {
+    font-family: 'Give You Glory', cursive;
+    text-decoration: none;
+    color: $almostblack;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  ul {
+    li {
+      line-height: 25px;
+    }
+  }
+}
+.leftcol {
+  @include grid(6,1);
+  padding-right: 20px;
+}
+.rightcol {
+  @include grid(6,7);
+  padding-left: 20px;
 }
 article {
   float: left;
   width: 75%;
+  padding-right: 20px;
 }
 aside {
-  float: right;
+  float: left;
   width: 20%;
+  padding-left: 20px;
 }
 
 /* header */
@@ -109,13 +147,13 @@ header {
   }
   #logo {
     float: left;
-    width: 40%;
+    width: 330px;
     font-size: 26px;
     margin: 0;
   }
   nav {
     float: right;
-    width: 40%;
+    width: 215px;
     text-transform: uppercase;
     font-size: 16px;
     li {
@@ -173,7 +211,7 @@ select.form-select {
   background: #f9f3e9 url(../images/select-arrow.jpg) center right no-repeat;
 }
 input, textarea, select, .uneditable-input {
-  //width: 100%;
+  width: 100%;
   margin-bottom: 15px;
   -webkit-appearance: none;
   padding: 0;
@@ -186,23 +224,5 @@ input, textarea, select, .uneditable-input {
 }
 .form-row {
   @include clear;
-  label {
-    display: inline;
-  }
-  input {
-    display: inline;
-  }
-}
-// character possibly only styles
-#char-stats {
-  @include clear;
-  .leftcol {
-    float: left;
-    width: 40%;
-  }
-  .rightcol {
-    float: right;
-    width: 40%;
-  }
 }
 

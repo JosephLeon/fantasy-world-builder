@@ -9,27 +9,44 @@
       </div>
 
       <h3>Stats</h3>
+        <div class="form-row">
+          <div class="leftcol">
+            <%= f.label :intelligence %>
+            <%= f.text_field :intelligence %>
+          </div>
+          <div class="rightcol">
+            <%= f.label :patience %>
+            <%= f.text_field :patience %>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="leftcol">
+            <%= f.label :charisma %>
+            <%= f.text_field :charisma %>
+          </div>
+          <div class="rightcol">
+            <%= f.label :strength %>
+            <%= f.text_field :strength %>
+          </div>
+        </div>
 
-      <div id="char-stats">
-        <div class="leftcol">
-          <%= f.label :intelligence %>
-          <%= f.text_field :intelligence %>
-          <%= f.label :patience %>
-          <%= f.text_field :patience %>
-          <%= f.label :charisma %>
-          <%= f.text_field :charisma %>
+        <div class="form-row">
+          <div class="leftcol">
+            <%= f.label :endurance %>
+            <%= f.text_field :endurance %>
+          </div>
+          <div class="rightcol">
+            <%= f.label :agility %>
+            <%= f.text_field :agility %>
+          </div>
         </div>
-        <div class="rightcol">
-          <%= f.label :strength %>
-          <%= f.text_field :strength %>
-          <%= f.label :endurance %>
-          <%= f.text_field :endurance %>
-          <%= f.label :agility %>
-          <%= f.text_field :agility %>
-          <%= f.label :constitution %>
-          <%= f.text_field :constitution %>
+
+        <div class="form-row">
+          <div class="leftcol">
+            <%= f.label :constitution %>
+            <%= f.text_field :constitution %>
+          </div>
         </div>
-      </div>
 
       <h3>Appearance</h3>
 
@@ -45,7 +62,7 @@
       <%= f.label :weapon %>
       <%= f.text_field :weapon %>
 
-      <%= f.submit "Create character", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Create character", id: "submit" %>
 
     <% end %>
 
