@@ -26,7 +26,7 @@ $brown: #554125;
 
 // typography
 h1, h2, h3, h4, h5, h6 {
-
+  margin: 36px 0 18px 0;
 }
 h1 {
   font-size: 60px;
@@ -42,7 +42,8 @@ h3 {
   font-size: 30px;
 }
 p {
-
+  margin-bottom: 18px;
+  line-height: 25px;
 }
 
 // base
@@ -81,7 +82,7 @@ aside {
 
 /* header */
 header {
-  background: $brown;
+  background: $brown url(../images/header.jpg) repeat-x;
   position: fixed;
   top: 0;
   width: 100%;
@@ -90,10 +91,11 @@ header {
   box-shadow:  0px 0px 10px 1px rgba(0, 0, 0, .25);
   a {
     text-decoration: none;
-    color: #fff;
+    color: $paper;
     line-height: 60px;
     &:hover {
       text-decoration: none;
+      color: #fff;
     }
   }
   #logo {
