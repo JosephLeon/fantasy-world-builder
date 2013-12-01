@@ -75,6 +75,7 @@ body {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 #content {
   @include clear;
@@ -172,17 +173,36 @@ select.form-select {
   background: #f9f3e9 url(../images/select-arrow.jpg) center right no-repeat;
 }
 input, textarea, select, .uneditable-input {
-  width: 100%;
+  //width: 100%;
   margin-bottom: 15px;
   -webkit-appearance: none;
   padding: 0;
   background: none;
   border: 0;
-  border-bottom: 1px solid $almostblack;
+  border-bottom: 1px solid #65553e;
   cursor: auto;
   font-family: 'Rock Salt', cursive;
   font-size: 20px;
 }
-input {
-  height: auto !important;
+.form-row {
+  @include clear;
+  label {
+    display: inline;
+  }
+  input {
+    display: inline;
+  }
 }
+// character possibly only styles
+#char-stats {
+  @include clear;
+  .leftcol {
+    float: left;
+    width: 40%;
+  }
+  .rightcol {
+    float: right;
+    width: 40%;
+  }
+}
+

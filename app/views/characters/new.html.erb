@@ -3,25 +3,33 @@
 
     <%= form_for(@character) do |f| %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <div class="form-row">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
 
       <h3>Stats</h3>
 
-      <%= f.label :intelligence %>
-      <%= f.text_field :intelligence %>
-      <%= f.label :patience %>
-      <%= f.text_field :patience %>
-      <%= f.label :charisma %>
-      <%= f.text_field :charisma %>
-      <%= f.label :strength %>
-      <%= f.text_field :strength %>
-      <%= f.label :endurance %>
-      <%= f.text_field :endurance %>
-      <%= f.label :agility %>
-      <%= f.text_field :agility %>
-      <%= f.label :constitution %>
-      <%= f.text_field :constitution %>
+      <div id="char-stats">
+        <div class="leftcol">
+          <%= f.label :intelligence %>
+          <%= f.text_field :intelligence %>
+          <%= f.label :patience %>
+          <%= f.text_field :patience %>
+          <%= f.label :charisma %>
+          <%= f.text_field :charisma %>
+        </div>
+        <div class="rightcol">
+          <%= f.label :strength %>
+          <%= f.text_field :strength %>
+          <%= f.label :endurance %>
+          <%= f.text_field :endurance %>
+          <%= f.label :agility %>
+          <%= f.text_field :agility %>
+          <%= f.label :constitution %>
+          <%= f.text_field :constitution %>
+        </div>
+      </div>
 
       <h3>Appearance</h3>
 
