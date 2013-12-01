@@ -4,14 +4,12 @@ class CharactersController < ApplicationController
     @character = Character.all
   end
 
-  def new
-    @character = Character.new
+  def show
+    @character = Character.find(params[:id])
   end
 
-  def destroy
-    @character = Character.find(params[:id])
-    @character.destroy
-    redirect_to action: :index
+  def new
+    @character = Character.new
   end
 
   def create
@@ -23,12 +21,20 @@ class CharactersController < ApplicationController
     end
   end
 
-  def show
+  def edit
     @character = Character.find(params[:id])
   end
 
-  def edit
+  def update
     @character = Character.find(params[:id])
+    @character.update_attributes(character_params)
+    redirect_to :action => 'show', :id => @character
+  end
+
+  def destroy
+    @character = Character.find(params[:id])
+    @character.destroy
+    redirect_to action: :index
   end
 
   private
@@ -44,6 +50,28 @@ class CharactersController < ApplicationController
         :gold,
         :weapon,
         :description,
-        :history)
+        :history,
+        :health,
+        :armor,
+        :level,
+        :career,
+        :attack,
+        :defense,
+        :perception,
+        :weight,
+        :weight_penalty,
+        :race,
+        :clan,
+        :spells,
+        :abilities,
+        :skills,
+        :powers,
+        :languages,
+        :magic_save,
+        :mind_save,
+        :weather_save,
+        :poison_save,
+        :force_save,
+        :notes)
     end
 end
