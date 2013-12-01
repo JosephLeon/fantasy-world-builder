@@ -4,7 +4,7 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:none;}table{border-collapse:collapse;border-spacing:0;}
 
 // fonts
-@import url('http://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic,700');
+@import url('http://fonts.googleapis.com/css?family=Old+Standard+TT:400,400italic,700|Rock+Salt');
 
 // mixins & variables
 @mixin webkitmarginreset($webkitmargin) {
@@ -19,6 +19,14 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
     display: table;
     clear: both;
   }
+}
+@mixin removeFireFoxSelectArrow {
+  -moz-appearance:     none;
+  text-indent:        0.01px;
+  text-overflow:      '';
+  background:         rgba(0,0,0,0);
+  -webkit-appearance: none;
+  border-radius:      0px;
 }
 $almostblack: #161616;
 $paper: #ede0ce;
@@ -121,7 +129,7 @@ header {
   }
 }
 
-/* footer */
+// footer
 footer {
   margin-top: 45px;
   padding-top: 5px;
@@ -146,12 +154,34 @@ footer ul li {
   margin-left: 10px;
 }
 
-/* forms */
+// forms
+// remove blue glow
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+// remove dotted outline on firefox selects/buttons
+select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #000;
+}
+select.form-select {
+  // remove firefox select arrow
+  @include removeFireFoxSelectArrow;
+  background: #f9f3e9 url(../images/select-arrow.jpg) center right no-repeat;
+}
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
-  //@include box_sizing;
+  -webkit-appearance: none;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid $almostblack;
+  cursor: auto;
+  font-family: 'Rock Salt', cursive;
+  font-size: 20px;
 }
 input {
   height: auto !important;

@@ -1,13 +1,18 @@
 WorldBuilder::Application.routes.draw do
 
-  get "universes/index"
-  get "universes/new"
-  get "universes/show"
+
   resources :characters
+  resources :universes
   root 'static_pages#home'
   match '/',              to: 'static_pages#home',    via: 'get'
   match '/help',          to: 'static_pages#help',    via: 'get'
   match '/new-character', to: 'characters#new',       via: 'get'
+  match '/new-universe',  to: 'universes#new',        via: 'get'
+
+
+  # get "universes/index"
+  # get "universes/new"
+  # get "universes/show"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

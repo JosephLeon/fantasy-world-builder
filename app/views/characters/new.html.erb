@@ -1,8 +1,6 @@
 <% @title = "Character Creation" %>
 <p>Begin creating your character!</p>
 
-<div class="row">
-  <div class="span6">
     <%= form_for(@character) do |f| %>
 
       <%= f.label :name %>
@@ -42,5 +40,4 @@
       <%= f.submit "Create character", class: "btn btn-large btn-primary" %>
 
     <% end %>
-  </div>
-</div>
+
