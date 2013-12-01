@@ -6,20 +6,32 @@
 <p>Gold: <%= @character.gold %></p>
 
 <h3>Stats</h3>
-<p>Intelligence: <%= @character.intelligence %></p>
-<p>Patience: <%= @character.patience %></p>
-<p>Perception: <%= @character.perception %></p>
-<p>Charisma: <%= @character.charisma %></p>
-<p>Strength: <%= @character.strength %></p>
-<p>Endurance: <%= @character.endurance %></p>
-<p>Agility: <%= @character.agility %></p>
-<p>Constituion: <%= @character.constitution %></p>
+<div class="clear">
+  <div class="leftcol">
+    <p>Intelligence: <%= @character.intelligence %></p>
+    <p>Patience: <%= @character.patience %></p>
+    <p>Perception: <%= @character.perception %></p>
+    <p>Charisma: <%= @character.charisma %></p>
+  </div>
+  <div class="rightcol">
+    <p>Strength: <%= @character.strength %></p>
+    <p>Endurance: <%= @character.endurance %></p>
+    <p>Agility: <%= @character.agility %></p>
+    <p>Constituion: <%= @character.constitution %></p>
+  </div>
+</div>
 
 <h3>Combat</h3>
-<p>Attack: <%= @character.attack %></p>
-<p>Defense: <%= @character.defense %></p>
-<p>Armor: <%= @character.armor %></p>
-<p>Weapon: <%= @character.weapon %></p>
+<div class="clear">
+  <div class="leftcol">
+    <p>Attack: <%= @character.attack %></p>
+    <p>Defense: <%= @character.defense %></p>
+  </div>
+  <div class="rightcol">
+    <p>Armor: <%= @character.armor %></p>
+    <p>Weapon: <%= @character.weapon %></p>
+  </div>
+</div>
 
 <h3>Skills and Abilities</h3>
 <p>Skills: <%= @character.skills %></p>

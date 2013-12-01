@@ -92,6 +92,9 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
+.clear {
+  @include clear;
+}
 #content, footer {
   @include clear;
   a {
