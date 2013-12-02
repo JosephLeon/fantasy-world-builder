@@ -101,13 +101,17 @@ body {
     font-family: 'Give You Glory', cursive;
     text-decoration: none;
     color: $almostblack;
+    font-size: 25px;
     &:hover {
       text-decoration: underline;
     }
   }
   ul {
+    list-style-type: disc;
+    padding-left: 20px;
     li {
       line-height: 25px;
+      margin-bottom: 7px;
     }
   }
 }
@@ -236,10 +240,11 @@ table {
   width: 100%;
 }
 td {
-  padding: 5px;
+  padding: 7px;
   border: 1px solid $darkpaper;
 }
 th {
   text-align: left;
+  padding: 7px;
 }
 

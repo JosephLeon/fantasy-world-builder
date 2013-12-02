@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131201164618) do
+ActiveRecord::Schema.define(version: 20131202012444) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20131201164618) do
     t.integer  "poison_save"
     t.integer  "force_save"
     t.text     "notes"
+  end
+
+  create_table "universes", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "special_rules"
+    t.text     "pantheon"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
