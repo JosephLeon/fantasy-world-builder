@@ -1,3 +1,18 @@
 <% @title = "Universes" %>
-<h1>Universes#index</h1>
-<p>Find me in app/views/universes/index.html.erb</p>
+
+<table class="table">
+  <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  <% @universe.each do |universe| %>
+    <tr>
+      <td><%= link_to universe.name, universe %></td>
+      <td><%= link_to "Edit", edit_character_path(universe) %></td>
+      <td><%= link_to "Remove", universe, method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+  <% end %>
+</table>

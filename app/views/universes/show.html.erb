@@ -1,3 +1,7 @@
-<% @title = "Re-Write to Universe Name" %>
-<h1>Universes#show</h1>
-<p>Find me in app/views/universes/show.html.erb</p>
+<% @title = @universe.name %>
+
+<p>Description: <%= @universe.description %></p>
+<p>Special Rules: <%= @universe.special_rules %></p>
+<p>Pantheon: <%= @universe.pantheon %></p>
+
+

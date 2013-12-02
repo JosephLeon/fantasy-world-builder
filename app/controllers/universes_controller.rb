@@ -1,39 +1,48 @@
 class UniversesController < ApplicationController
+
   def index
-    #@character = Character.all
-  end
-
-  def new
-    #@character = Character.new
-  end
-
-  def create
-    # @character = Character.new(character_params)
-    # if @character.save
-    #   redirect_to @character
-    # else
-    #   render 'new'
-    # end
+    @universe = Universe.all
   end
 
   def show
-    #@character = Character.find(params[:id])
+    @universe = Universe.find(params[:id])
+  end
+
+  def new
+    @universe = Universe.new
+  end
+
+  def create
+    @universe = Universe.new(character_params)
+    if @universe.save
+      redirect_to @universe
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+    @universe = Universe.find(params[:id])
+  end
+
+  def update
+    @universe = Universe.find(params[:id])
+    @universe.update_attributes(character_params)
+    redirect_to :action => 'show', :id => @universe
+  end
+
+  def destroy
+    @universe = Universe.find(params[:id])
+    @universe.destroy
+    redirect_to action: :index
   end
 
   private
 
-    # def character_params
-    #   params.require(:character).permit(:name,
-    #     :intelligence,
-    #     :patience,
-    #     :charisma,
-    #     :strength,
-    #     :endurance,
-    #     :agility,
-    #     :constitution,
-    #     :gold,
-    #     :weapon,
-    #     :description,
-    #     :history)
-    # end
+    def character_params
+      params.require(:universe).permit(:name,
+        :description,
+        :special_rules,
+        :pantheon)
+    end
 end
