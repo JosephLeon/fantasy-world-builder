@@ -7,10 +7,17 @@
 <h3>Characters <%= @universe.characters.count %></h3>
 <% if @universe.characters.any? %>
   <p>There are <%= @universe.characters.count %> characters in this universe.</p>
-  <ol>
+  <table class="table">
+    <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
     <%= render @characters %>
     <%= @universe.characters.name %>
-  </ol>
+  </table>
 <% else %>
   <p>There are no characters in this universe, or they all died...</p>
 <% end %>

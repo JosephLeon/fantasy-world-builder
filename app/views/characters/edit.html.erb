@@ -16,6 +16,9 @@
             <option value="<%= universe.id %>"><%= universe.name %></option>
           <% end %>
       </select>
+      <% f.text_field :universe_id, :value => '2' %>
+      <%= f.label :universe_id %>
+      <%= f.text_field :universe_id %>
 
       <div class="form-row">
         <%= f.label :name %>
