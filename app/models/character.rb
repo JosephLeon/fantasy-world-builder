@@ -1,6 +1,10 @@
 class Character < ActiveRecord::Base
+
+  belongs_to :universe
+  default_scope -> { order('name ASC') }
+
   validates_presence_of :name, :career, :race, :attack, :defense, :armor,
-                :weapon, :languages, :description
+                :weapon, :languages, :description, :universe_id
 
   validates_length_of :name,  :maximum => 128,
                               :too_long => "Can't be more than 128 characters."

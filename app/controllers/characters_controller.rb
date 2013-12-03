@@ -72,6 +72,7 @@ class CharactersController < ApplicationController
         :weather_save,
         :poison_save,
         :force_save,
-        :notes)
+        :notes,
+        :universe_id)
     end
 end
