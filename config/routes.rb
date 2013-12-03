@@ -7,7 +7,8 @@ WorldBuilder::Application.routes.draw do
   match '/help',            to: 'static_pages#help',    via: 'get'
   match '/new-character',   to: 'characters#new',       via: 'get'
   match '/new-universe',    to: 'universes#new',        via: 'get'
-  #match '/characters/:name',  to: 'characters#show',      via: 'get'
+
+  #match ':universe/characters/:name',  to: 'characters#show',      via: 'get'
 
   # get "universes/index"
   # get "universes/new"
