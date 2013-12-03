@@ -6,10 +6,12 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
+    #@universe  = Universe.find(params[:universe_id])
   end
 
   def new
     @character = Character.new
+    #@universe  = Universe.find(params[:name])
   end
 
   def create

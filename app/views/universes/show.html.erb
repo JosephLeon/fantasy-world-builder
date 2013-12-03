@@ -4,11 +4,12 @@
 <p>Special Rules: <%= @universe.special_rules %></p>
 <p>Pantheon: <%= @universe.pantheon %></p>
 
-<h3>Characters</h3>
+<h3>Characters <%= @universe.characters.count %></h3>
 <% if @universe.characters.any? %>
   <p>There are <%= @universe.characters.count %> characters in this universe.</p>
   <ol>
     <%= render @characters %>
+    <%= @universe.characters.name %>
   </ol>
 <% else %>
   <p>There are no characters in this universe, or they all died...</p>
