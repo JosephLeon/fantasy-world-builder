@@ -3,18 +3,14 @@
 
     <%= form_for(@character) do |f| %>
 
-
-
-      <p>Universe</p>
-      <%= options_from_collection_for_select(Universe.all, :id, :name) %>
-      <%= collection_select(:character, :universe_id, Universe.all, :id, :name) %>
-
-      <%#= f.label :universe_id %>
-      <%#= f.text_field :universe_id %>
-
       <div class="form-row">
         <%= f.label :name %>
         <%= f.text_field :name %>
+
+        <%= f.label :universe_id %>
+        <%= options_from_collection_for_select(Universe.all, :id, :name) %>
+        <%= collection_select(:character, :universe_id, Universe.all, :id, :name) %>
+
         <%= f.label :career %>
         <%= f.text_field :career %>
       </div>

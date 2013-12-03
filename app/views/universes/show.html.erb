@@ -1,10 +1,10 @@
 <% @title = @universe.name %>
 
-<p>Description: <%= @universe.description %></p>
-<p>Special Rules: <%= @universe.special_rules %></p>
-<p>Pantheon: <%= @universe.pantheon %></p>
+<p><strong>Description:</strong> <%= @universe.description %></p>
+<p><strong>Special Rules:</strong> <%= @universe.special_rules %></p>
+<p><strong>Pantheon:</strong> <%= @universe.pantheon %></p>
 
-<h3>Characters <%= @universe.characters.count %></h3>
+<h3>Characters</h3>
 <% if @universe.characters.any? %>
   <p>There are <%= @universe.characters.count %> characters in this universe.</p>
   <table class="table">
