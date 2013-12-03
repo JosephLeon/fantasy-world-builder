@@ -1,14 +1,13 @@
 WorldBuilder::Application.routes.draw do
 
 
-  resources :characters
-  resources :universes
+  resources :characters, :universes
   root 'static_pages#home'
-  match '/',              to: 'static_pages#home',    via: 'get'
-  match '/help',          to: 'static_pages#help',    via: 'get'
-  match '/new-character', to: 'characters#new',       via: 'get'
-  match '/new-universe',  to: 'universes#new',        via: 'get'
-
+  match '/',                to: 'static_pages#home',    via: 'get'
+  match '/help',            to: 'static_pages#help',    via: 'get'
+  match '/new-character',   to: 'characters#new',       via: 'get'
+  match '/new-universe',    to: 'universes#new',        via: 'get'
+  #match '/characters/:name',  to: 'characters#show',      via: 'get'
 
   # get "universes/index"
   # get "universes/new"
