@@ -3,22 +3,14 @@
 
     <%= form_for(@character) do |f| %>
 
-      <% collection_select(
-        :character,
-        :universe_id,
-        Universe.all,
-        :id,
-        :name,
-        prompt: "Select a universe:") %>
-      <label for="">Universe</label>
-      <select name="post[universe_id]">
-          <% Universe.all.each do |universe| %>
-            <option value="<%= universe.id %>"><%= universe.name %></option>
-          <% end %>
-      </select>
-      <% f.text_field :universe_id, :value => '2' %>
-      <%= f.label :universe_id %>
-      <%= f.text_field :universe_id %>
+
+
+      <p>Universe</p>
+      <%= options_from_collection_for_select(Universe.all, :id, :name) %>
+      <%= collection_select(:character, :universe_id, Universe.all, :id, :name) %>
+
+      <%#= f.label :universe_id %>
+      <%#= f.text_field :universe_id %>
 
       <div class="form-row">
         <%= f.label :name %>
