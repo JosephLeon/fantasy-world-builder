@@ -4,6 +4,10 @@ class Character < ActiveRecord::Base
   has_many :items
   default_scope -> { order('name ASC') }
 
+  def name_for_item
+    "#{name}"
+  end
+
   validates_presence_of :name, :career, :race, :attack, :defense, :armor,
                 :weapon, :languages, :description, :universe_id
 

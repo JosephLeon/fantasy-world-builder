@@ -22,11 +22,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = @item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def update
-    @item = @item.find(params[:id])
+    @item = Item.find(params[:id])
     @item.update_attributes(item_params)
     redirect_to :action => 'show', :id => @item
   end

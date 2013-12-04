@@ -45,3 +45,20 @@
 <p><strong>Description:</strong> <%= @character.description %></p>
 <p><strong>History:</strong> <%= @character.history %></p>
 <p><strong>Notes:</strong> <%= @character.notes %></p>
+
+<h3>Items</h3>
+<% if @character.items.any? %>
+  <p><%= @character.name %> owns <%= @character.items.count %> items.</p>
+  <table class="table">
+    <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    <%= render @items %>
+  </table>
+<% else %>
+  <p><%= @character.name %> has no items, or they were stolen...</p>
+<% end %>

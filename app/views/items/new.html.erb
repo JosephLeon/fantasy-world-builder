@@ -6,6 +6,10 @@
     <%= f.text_field :name %>
     <%= f.label :appearance %>
     <%= f.text_area :appearance %>
+
+    <%= f.label :character_id %>
+    <%= collection_select(:item, :character_id, Character.all, :id, :name_for_item, prompt: true) %>
+
   </div>
   <div class="form-row">
     <div class="leftcol">
