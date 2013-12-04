@@ -1,2 +1,16 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<% @title = @item.name %>
+<p><strong>Appearance:</strong> <%= @item.appearance %></p>
+
+<div class="clear">
+  <div class="leftcol">
+    <p><strong>Damage:</strong> <%= @item.damage %></p>
+    <p><strong>Weight:</strong> <%= @item.weight %></p>
+  </div>
+  <div class="rightcol">
+    <p><strong>Durability:</strong> <%= @item.durability %></p>
+    <p><strong>Size:</strong> <%= @item.size %></p>
+  </div>
+</div>
+
+<p><strong>Powers:</strong> <%= @item.powers %></p>
+<p><strong>Notes:</strong> <%= @item.notes %></p>

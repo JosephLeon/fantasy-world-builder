@@ -1,6 +1,7 @@
 class Character < ActiveRecord::Base
 
   belongs_to :universe
+  has_many :items
   default_scope -> { order('name ASC') }
 
   validates_presence_of :name, :career, :race, :attack, :defense, :armor,

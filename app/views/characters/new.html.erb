@@ -1,130 +1,123 @@
 <% @title = "Character Creation" %>
-<p>Begin creating your character!</p>
+<%= form_for(@character) do |f| %>
+  <%= render 'shared/error_messages' %>
 
-    <%= form_for(@character) do |f| %>
+  <div class="form-row">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-      <%= render 'shared/error_messages' %>
+    <%= f.label :universe_id %>
+    <%= options_from_collection_for_select(Universe.all, :id, :name) %>
+    <%= collection_select(:character, :universe_id, Universe.all, :id, :name) %>
 
-      <div class="form-row">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+    <%= f.label :career %>
+    <%= f.text_field :career %>
+  </div>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :level %>
+      <%= f.text_field :level %>
+    </div>
+    <div class="rightcol">
+      <%= f.label :race %>
+      <%= f.text_field :race %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :gold %>
+      <%= f.text_field :gold %>
+    </div>
+    <div class="rightcol">
 
-        <%= f.label :universe_id %>
-        <%= options_from_collection_for_select(Universe.all, :id, :name) %>
-        <%= collection_select(:character, :universe_id, Universe.all, :id, :name) %>
+    </div>
+  </div>
 
-        <%= f.label :career %>
-        <%= f.text_field :career %>
-      </div>
-      <div class="form-row">
-        <div class="leftcol">
-          <%= f.label :level %>
-          <%= f.text_field :level %>
-        </div>
-        <div class="rightcol">
-          <%= f.label :race %>
-          <%= f.text_field :race %>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="leftcol">
-          <%= f.label :gold %>
-          <%= f.text_field :gold %>
-        </div>
-        <div class="rightcol">
+  <h3>Stats</h3>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :intelligence %>
+      <%= f.text_field :intelligence %>
+    </div>
+    <div class="rightcol">
+      <%= f.label :patience %>
+      <%= f.text_field :patience %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :charisma %>
+      <%= f.text_field :charisma %>
+    </div>
+    <div class="rightcol">
+      <%= f.label :perception %>
+      <%= f.text_field :perception %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :strength %>
+      <%= f.text_field :strength %>
+    </div>
+    <div class="rightcol">
+      <%= f.label :agility %>
+      <%= f.text_field :agility %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :constitution %>
+      <%= f.text_field :constitution %>
+    </div>
+    <div class="rightcol">
+      <%= f.label :endurance %>
+      <%= f.text_field :endurance %>
+    </div>
+  </div>
 
-        </div>
-      </div>
+  <h3>Combat</h3>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :attack %>
+      <%= f.text_field :attack %>
+    </div>
+    <div class="rightcol">
+      <%= f.label :defense %>
+      <%= f.text_field :defense %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :armor %>
+      <%= f.text_field :armor %>
+    </div>
+    <div class="rightcol">
+      <%= f.label :weapon %>
+      <%= f.text_field :weapon %>
+    </div>
+  </div>
 
-      <h3>Stats</h3>
-        <div class="form-row">
-          <div class="leftcol">
-            <%= f.label :intelligence %>
-            <%= f.text_field :intelligence %>
-          </div>
-          <div class="rightcol">
-            <%= f.label :patience %>
-            <%= f.text_field :patience %>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="leftcol">
-            <%= f.label :charisma %>
-            <%= f.text_field :charisma %>
-          </div>
-          <div class="rightcol">
-            <%= f.label :perception %>
-            <%= f.text_field :perception %>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="leftcol">
-            <%= f.label :strength %>
-            <%= f.text_field :strength %>
-          </div>
-          <div class="rightcol">
-            <%= f.label :agility %>
-            <%= f.text_field :agility %>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="leftcol">
-            <%= f.label :constitution %>
-            <%= f.text_field :constitution %>
-          </div>
-          <div class="rightcol">
-            <%= f.label :endurance %>
-            <%= f.text_field :endurance %>
-          </div>
-        </div>
+  <h3>Skills and Abilities</h3>
+  <%= f.label :skills %>
+  <%= f.text_area :skills %>
+  <%= f.label :abilities %>
+  <%= f.text_area :abilities %>
+  <%= f.label :spells %>
+  <%= f.text_area :spells %>
+  <%= f.label :powers %>
+  <%= f.text_area :powers %>
+  <%= f.label :languages %>
+  <%= f.text_area :languages %>
 
-      <h3>Combat</h3>
-        <div class="form-row">
-          <div class="leftcol">
-            <%= f.label :attack %>
-            <%= f.text_field :attack %>
-          </div>
-          <div class="rightcol">
-            <%= f.label :defense %>
-            <%= f.text_field :defense %>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="leftcol">
-            <%= f.label :armor %>
-            <%= f.text_field :armor %>
-          </div>
-          <div class="rightcol">
-            <%= f.label :weapon %>
-            <%= f.text_field :weapon %>
-          </div>
-        </div>
+  <h3>Personal Info</h3>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.label :history %>
+  <%= f.text_area :history %>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %>
 
+  <%= f.submit "Create Character.", id: "submit" %>
 
-
-      <h3>Skills and Abilities</h3>
-        <%= f.label :skills %>
-        <%= f.text_area :skills %>
-        <%= f.label :abilities %>
-        <%= f.text_area :abilities %>
-        <%= f.label :spells %>
-        <%= f.text_area :spells %>
-        <%= f.label :powers %>
-        <%= f.text_area :powers %>
-        <%= f.label :languages %>
-        <%= f.text_area :languages %>
-
-      <h3>Personal Info</h3>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-      <%= f.label :history %>
-      <%= f.text_area :history %>
-      <%= f.label :notes %>
-      <%= f.text_area :notes %>
-
-
-
-      <%= f.submit "Create character", id: "submit" %>
-
-    <% end %>
+<% end %>
 
