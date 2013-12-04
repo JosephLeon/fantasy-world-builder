@@ -1,5 +1,4 @@
 <% @title = "Edit Item" %>
-
 <%= form_for(@item) do |f| %>
   <div class="form-row">
     <%= f.label :name %>
@@ -8,13 +7,7 @@
     <%= f.text_area :appearance %>
 
     <%= f.label :character_id %>
-    <%= collection_select(
-      :item,
-      :character_id,
-      Character.all,
-      :id,
-      :character_name_for_item,
-      prompt: true) %>
+    <%= collection_select(:item, :character_id, Character.all, :id, :character_name_for_item, prompt: true) %>
   </div>
   <div class="form-row">
     <div class="leftcol">

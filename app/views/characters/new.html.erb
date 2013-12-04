@@ -7,7 +7,13 @@
     <%= f.text_field :name %>
 
     <%= f.label :universe_id %>
-    <%= collection_select(:character, :universe_id, Universe.all, :id, :universe_name_for_character) %>
+    <%= collection_select(
+      :character,
+      :universe_id,
+      Universe.all,
+      :id,
+      :universe_name_for_character,
+      prompt: true) %>
 
     <%= f.label :career %>
     <%= f.text_field :career %>
