@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203020036) do
+ActiveRecord::Schema.define(version: 20131204011657) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
@@ -51,6 +51,22 @@ ActiveRecord::Schema.define(version: 20131203020036) do
     t.integer  "force_save"
     t.text     "notes"
     t.integer  "universe_id"
+  end
+
+  create_table "items", force: true do |t|
+    t.string   "name"
+    t.text     "appearance"
+    t.integer  "weight"
+    t.string   "size"
+    t.integer  "damage"
+    t.integer  "durability"
+    t.text     "powers"
+    t.text     "notes"
+    t.integer  "character_id"
+    t.integer  "monster_id"
+    t.integer  "area_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "universes", force: true do |t|

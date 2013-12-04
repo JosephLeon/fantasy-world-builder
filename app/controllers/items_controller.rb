@@ -1,19 +1,19 @@
 class ItemsController < ApplicationController
   def new
-    @items = Item.new
+    @item = Item.new
   end
 
   def index
-    @items = Item.all
+    @item = Item.all
   end
 
   def show
-    @items = Item.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def create
-    @items = Item.new(item_params)
-    if @items.save
+    @item = Item.new(item_params)
+    if @item.save
       redirect_to @item
     else
       render 'new'
@@ -35,4 +35,19 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to action: :index
   end
+
+  private
+    def item_params
+      params.require(:item).permit(:name,
+        :appearance,
+        :weight,
+        :size,
+        :damage,
+        :durability,
+        :powers,
+        :notes,
+        :character_id,
+        :monster_id,
+        :area_id)
+    end
 end

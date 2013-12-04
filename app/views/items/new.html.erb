@@ -1,2 +1,37 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<% @title = "New Item" %>
+
+<%= form_for(@item) do |f| %>
+  <div class="form-row">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :appearance %>
+    <%= f.text_area :appearance %>
+  </div>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :damage %>
+      <%= f.text_field :damage %>
+    </div>
+    <div class="rightcol">
+      <%= f.label :durability %>
+      <%= f.text_field :durability %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :weight %>
+      <%= f.text_field :weight %>
+    </div>
+    <div class="rightcol">
+      <%= f.label :size %>
+      <%= f.text_field :size %>
+    </div>
+  </div>
+  <div class="form-row">
+    <%= f.label :powers %>
+    <%= f.text_area :powers %>
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+  </div>
+  <%= f.submit "Create character", id: "submit" %>
+<% end %>
