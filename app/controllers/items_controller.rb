@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = @item.find(params[:id])
+    @item = Item.find(params[:id])
     @item.destroy
     redirect_to action: :index
   end
