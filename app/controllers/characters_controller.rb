@@ -6,7 +6,7 @@ class CharactersController < ApplicationController
   def show
     @character = Character.find(params[:id])
     @universe  = @character.universe
-    @item = @character.items
+    @items = @character.items
   end
 
   def new
