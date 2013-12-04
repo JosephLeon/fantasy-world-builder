@@ -5,8 +5,8 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
-    # allows universe name to render
     @universe  = @character.universe
+    @item = @character.item
   end
 
   def new

@@ -6,7 +6,6 @@ class UniversesController < ApplicationController
 
   def show
     @universe = Universe.find(params[:id])
-    # allows for characters belonging to this universe to be rendered
     @characters = @universe.characters
   end
 

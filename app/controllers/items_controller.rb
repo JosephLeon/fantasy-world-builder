@@ -1,14 +1,15 @@
 class ItemsController < ApplicationController
-  def new
-    @item = Item.new
-  end
-
   def index
     @item = Item.all
   end
 
   def show
     @item = Item.find(params[:id])
+    @character = @item.character
+  end
+
+  def new
+    @item = Item.new
   end
 
   def create
