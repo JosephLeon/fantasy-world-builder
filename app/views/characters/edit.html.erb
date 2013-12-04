@@ -8,8 +8,7 @@
         <%= f.text_field :name %>
 
         <%= f.label :universe_id %>
-        <%= options_from_collection_for_select(Universe.all, :id, :name) %>
-        <%= collection_select(:character, :universe_id, Universe.all, :id, :name) %>
+        <%= collection_select(:character, :universe_id, Universe.all, :id, :universe_name_for_character) %>
 
         <%= f.label :career %>
         <%= f.text_field :career %>

@@ -8,8 +8,13 @@
     <%= f.text_area :appearance %>
 
     <%= f.label :character_id %>
-    <%= options_from_collection_for_select(Character.all, :id, :name) %>
-    <%= collection_select(:item, :character_id, Character.all, :id, :name) %>
+    <%= collection_select(
+      :item,
+      :character_id,
+      Character.all,
+      :id,
+      :character_name_for_item,
+      prompt: true) %>
   </div>
   <div class="form-row">
     <div class="leftcol">

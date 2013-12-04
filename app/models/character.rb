@@ -4,7 +4,8 @@ class Character < ActiveRecord::Base
   has_many :items
   default_scope -> { order('name ASC') }
 
-  def name_for_item
+  # gets name list for item drop down
+  def character_name_for_item
     "#{name}"
   end
 
