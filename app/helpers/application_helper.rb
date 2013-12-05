@@ -12,4 +12,13 @@ module ApplicationHelper
     end
   end
 
+  # header for home page
+  def home_header
+    if current_page?('/')
+      render 'layouts/homeheader'
+    else
+      ""
+    end
+  end
+
 end

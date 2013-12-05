@@ -91,7 +91,7 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 body {
-  padding-top: 90px;
+  padding-top: 60px;
 }
 .container {
   max-width: 960px;
@@ -178,6 +178,12 @@ header {
   }
   .container {
     @include clear;
+  }
+}
+#header-image {
+  margin-bottom: 50px;
+  img {
+    width: 100%;
   }
 }
 
