@@ -22,6 +22,10 @@
     <div class="leftcol">
       <%= f.label :level %>
       <%= f.text_field :level %>
+      <%= f.label :health %>
+      <%= f.text_field :health %>
+      <%= f.label :weight %>
+      <%= f.text_field :weight %>
     </div>
     <div class="rightcol">
       <%= f.label :race %>
@@ -97,8 +101,25 @@
       <%= f.text_field :armor %>
     </div>
     <div class="rightcol">
-      <%= f.label :weapon %>
-      <%= f.text_field :weapon %>
+
+    </div>
+  </div>
+
+  <h3>Saves</h3>
+  <div class="form-row">
+    <div class="leftcol">
+      <%= f.label :magic_save %>
+      <%= f.text_field :magic_save %>
+      <%= f.label :mind_save %>
+      <%= f.text_field :mind_save %>
+      <%= f.label :force_save %>
+      <%= f.text_field :force_save %>
+    </div>
+    <div class="rightcol">
+      <%= f.label :weather_save %>
+      <%= f.text_field :weather_save %>
+      <%= f.label :poison_save %>
+      <%= f.text_field :poison_save %>
     </div>
   </div>
 

@@ -2,8 +2,17 @@
 <p><strong>Career/Class:</strong> <%= @character.career %></p>
 <p><strong>Level:</strong> <%= @character.level %></p>
 <p><strong>Race:</strong> <%= @character.race %></p>
-<p><strong>Gold:</strong> <%= number_with_delimiter(@character.gold) %></p>
 <p><strong>Universe:</strong> <%= link_to @universe.name, universe_path(@universe) %></p>
+<div class="clear">
+  <div class="leftcol">
+    <p><strong>Health:</strong> <%= @character.health %></p>
+    <p><strong>Weight:</strong> <%= @character.weight %></p>
+  </div>
+  <div class="rightcol">
+    <p><strong>Gold:</strong> <%= number_with_delimiter(@character.gold) %></p>
+    <p><strong>Clan/Guild:</strong> <%= @character.clan %></p>
+  </div>
+</div>
 
 <h3>Stats</h3>
 <div class="clear">
@@ -29,7 +38,19 @@
   </div>
   <div class="rightcol">
     <p><strong>Armor:</strong> <%= @character.armor %></p>
-    <p><strong>Weapon:</strong> <%= @character.weapon %></p>
+  </div>
+</div>
+
+<h3>Saves</h3>
+<div class="clear">
+  <div class="leftcol">
+    <p><strong>Magic:</strong> <%= @character.magic_save %></p>
+    <p><strong>Mind:</strong> <%= @character.mind_save %></p>
+    <p><strong>Force:</strong> <%= @character.force_save %></p>
+  </div>
+  <div class="rightcol">
+    <p><strong>Weather:</strong> <%= @character.weather_save %></p>
+    <p><strong>Poison:</strong> <%= @character.poison_save %></p>
   </div>
 </div>
 
