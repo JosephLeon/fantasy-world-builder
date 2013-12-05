@@ -47,7 +47,7 @@
 
 <h3>Items</h3>
 <% if @character.items.any? %>
-  <p><%= @character.name %> owns <%= @character.items.count %> <%= find_plurality_for_items(@character.items.count) %>.</p>
+  <p><%= @character.name %> owns <%= pluralize(@character.items.count, "item") %>.</p>
   <table class="table">
     <tr>
         <th>Name</th>
