@@ -1,4 +1,5 @@
 <% @title = "Create Universe" %>
+<%= render 'shared/universe_error_messages' %>
 <%= form_for(@universe) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>

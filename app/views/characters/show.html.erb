@@ -1,9 +1,8 @@
 <% @title = @character.name %>
-
 <p><strong>Career/Class:</strong> <%= @character.career %></p>
 <p><strong>Level:</strong> <%= @character.level %></p>
 <p><strong>Race:</strong> <%= @character.race %></p>
-<p><strong>Gold:</strong> <%= @character.gold %></p>
+<p><strong>Gold:</strong> <%= number_with_delimiter(@character.gold) %></p>
 <p><strong>Universe:</strong> <%= link_to @universe.name, universe_path(@universe) %></p>
 
 <h3>Stats</h3>
@@ -48,7 +47,7 @@
 
 <h3>Items</h3>
 <% if @character.items.any? %>
-  <p><%= @character.name %> owns <%= @character.items.count %> items.</p>
+  <p><%= @character.name %> owns <%= @character.items.count %> <%= find_plurality_for_items(@character.items.count) %>.</p>
   <table class="table">
     <tr>
         <th>Name</th>

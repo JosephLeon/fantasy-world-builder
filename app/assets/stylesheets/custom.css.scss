@@ -212,10 +212,6 @@ select:-moz-focusring {
   color: transparent;
   text-shadow: 0 0 0 #000;
 }
-select.form-select {
-  // remove firefox select arrow
-  @include removeFireFoxSelectArrow;
-}
 input, textarea, select, .uneditable-input {
   width: 100%;
   margin-bottom: 15px;
@@ -228,6 +224,12 @@ input, textarea, select, .uneditable-input {
   font-family: 'Rock Salt', cursive;
   font-size: 20px;
   color: #262828;
+}
+select {
+  // remove firefox select arrow
+  @include removeFireFoxSelectArrow;
+  background: url(../images/drop-down-arrow.png) right center no-repeat;
+  width: 102%;
 }
 input#submit {
   @include clear;
