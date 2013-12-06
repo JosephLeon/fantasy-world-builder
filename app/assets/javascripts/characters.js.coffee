@@ -21,7 +21,6 @@ ready = ->
 
   # random name click event
   $('.char-gen-button').click ->
-
     consonant = ["b","c","d","f","g","h","j","k","l","m","n","p","q",
                             "r","s","t","v","w","x","z"]
     vowel = ["a", "e", "i", "o", "u", "y"]
@@ -33,7 +32,6 @@ ready = ->
     chooseSecond = Math.floor((Math.random()*10)+1)
     substringRandLimiter1 = Math.floor((Math.random()*5)+3)
     substringRandLimiter2 = Math.floor((Math.random()*5)+3)
-
     randomNameGenerator = ->
       if isOdd(consonantComesFirst)
         if isOdd(chooseSingle) # first letter consonant
@@ -133,15 +131,29 @@ ready = ->
     level = Math.floor((Math.random()*18)+1)
     $('#character_level').val(level)
     $('#character_health').val(level * 10)
+    $('#character_attack').val(level + 2)
+    $('#character_defense').val(level)
+    $('#character_armor').val(level - 1)
+    $('#character_magic_save').val(level - 1)
+    $('#character_mind_save').val(level)
+    $('#character_force_save').val(level - 3)
+    $('#character_weather_save').val(level + 2)
+    $('#character_poison_save').val(level - 1)
     # set race, calculate weight
     races = ["Human","Dwarf","Elf","Halfling"]
     oneRace = races.shuffle()
     $('#character_race').val(oneRace[0])
-    if oneRace == "Human" || "Elf"
-      weight = Math.floor((Math.random()*110)+120)
+    if oneRace[0] == "Dwarf"
+      weight = Math.floor((Math.random()*140)+120)
       $('#character_weight').val(weight)
-    else if oneRace == "Halfling"
-      weight = Math.floor((Math.random()*120)+60)
+    else if oneRace[0] == "Halfling"
+      weight = Math.floor((Math.random()*80)+60)
+      $('#character_weight').val(weight)
+    else if oneRace[0] == "Elf"
+      weight = Math.floor((Math.random()*120)+90)
+      $('#character_weight').val(weight)
+    else
+      weight = Math.floor((Math.random()*120)+120)
       $('#character_weight').val(weight)
     # set class/proffesion
     classes = ["Fighter","Mage","Thief","Assassin","Thug","Psion","Hunter",
@@ -153,18 +165,22 @@ ready = ->
     gold = Math.floor((Math.random()*400)+1)
     $('#character_gold').val(gold)
     # set base stats
-    # arrStats = []
-    # while arrStats.length < 8
-    #   randomnumber = Math.floor((Math.random()*18)+1)
-    #   found = false
-    #   i = 0
-    #   while i < arr.length
-    #     if arr[i] is randomnumber
-    #       found = true
-    #       break
-    #     i++
-    #   arr[arr.length] = randomnumber  unless found
-    # $('#character_intelligence').val(arrStats[0])
+    statCounter = 0
+    maxNumStats = 8
+    statArray = []
+    while statCounter < maxNumStats
+      stat = Math.floor((Math.random()*14)+6)
+      statArray.push stat
+      statCounter++
+    $('#character_intelligence').val(statArray[0])
+    $('#character_patience').val(statArray[1])
+    $('#character_charisma').val(statArray[2])
+    $('#character_perception').val(statArray[3])
+    $('#character_strength').val(statArray[4])
+    $('#character_agility').val(statArray[5])
+    $('#character_constitution').val(statArray[6])
+    $('#character_endurance').val(statArray[7])
+
 
 
 $(document).ready(ready)
