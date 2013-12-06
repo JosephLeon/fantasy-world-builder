@@ -139,22 +139,6 @@ ready = ->
     $('#character_force_save').val(level - 3)
     $('#character_weather_save').val(level + 2)
     $('#character_poison_save').val(level - 1)
-    # set race, calculate weight
-    races = ["Human","Dwarf","Elf","Halfling"]
-    oneRace = races.shuffle()
-    $('#character_race').val(oneRace[0])
-    if oneRace[0] == "Dwarf"
-      weight = Math.floor((Math.random()*140)+120)
-      $('#character_weight').val(weight)
-    else if oneRace[0] == "Halfling"
-      weight = Math.floor((Math.random()*80)+60)
-      $('#character_weight').val(weight)
-    else if oneRace[0] == "Elf"
-      weight = Math.floor((Math.random()*120)+90)
-      $('#character_weight').val(weight)
-    else
-      weight = Math.floor((Math.random()*120)+120)
-      $('#character_weight').val(weight)
     # set class/proffesion
     classes = ["Fighter","Mage","Thief","Assassin","Thug","Psion","Hunter",
                 "Druid","Fight/Mage","Fighter/Thief","Mage/Assassin",
@@ -180,6 +164,45 @@ ready = ->
     $('#character_agility').val(statArray[5])
     $('#character_constitution').val(statArray[6])
     $('#character_endurance').val(statArray[7])
+    # set race, calculate weight
+    races = ["Human","Dwarf","Elf","Halfling"]
+    oneRace = races.shuffle()
+    $('#character_race').val(oneRace[0])
+    if oneRace[0] == "Dwarf"
+      weight = Math.floor((Math.random()*140)+120)
+      $('#character_weight').val(weight)
+      $('#character_magic_save').val(level + 5)
+      $('#character_mind_save').val(level + 3)
+      $('#character_armor').val(level + 4)
+      $('#character_patience').val(statArray[1] + 1)
+      $('#character_constitution').val(statArray[6] + 2)
+      $('#character_strength').val(statArray[4] + 2)
+      $('#character_agility').val(statArray[5] - 1)
+      $('#character_charisma').val(statArray[2] - 3)
+      $('#character_intelligence').val(statArray[0] - 1)
+    else if oneRace[0] == "Halfling"
+      weight = Math.floor((Math.random()*80)+60)
+      $('#character_weight').val(weight)
+      $('#character_poison_save').val(level + 4)
+      $('#character_agility').val(statArray[5] + 2)
+      $('#character_strength').val(statArray[4] - 2)
+      $('#character_intelligence').val(statArray[0] + 2)
+    else if oneRace[0] == "Elf"
+      weight = Math.floor((Math.random()*120)+90)
+      $('#character_weight').val(weight)
+      $('#character_force_save').val(level)
+      $('#character_weather_save').val(level + 6)
+      $('#character_intelligence').val(statArray[0] + 1)
+      $('#character_patience').val(statArray[1] + 2)
+      $('#character_strength').val(statArray[4] - 2)
+    else
+      weight = Math.floor((Math.random()*120)+120)
+      $('#character_weight').val(weight)
+      $('#character_armor').val(level + 2)
+      $('#character_patience').val(statArray[1] - 2)
+      $('#character_strength').val(statArray[4] + 1)
+      $('#character_endurance').val(statArray[7] + 2)
+      $('#character_charisma').val(statArray[0] + 2)
 
 
 
