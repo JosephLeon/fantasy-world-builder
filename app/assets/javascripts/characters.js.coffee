@@ -123,11 +123,48 @@ ready = ->
             fifthOne = fifth[0]
       fullName = firstOne.capitalize() + secondOne + thirdOne + fourthOne + fifthOne
 
+    #set name
     randomNameGenerator()
     firstName = randomNameGenerator()
     lastName = randomNameGenerator()
     $('#character_name').val(firstName.substring(0,substringRandLimiter1) +
       " " + lastName.substring(0,substringRandLimiter2))
+    # set level, calculate health
+    level = Math.floor((Math.random()*18)+1)
+    $('#character_level').val(level)
+    $('#character_health').val(level * 10)
+    # set race, calculate weight
+    races = ["Human","Dwarf","Elf","Halfling"]
+    oneRace = races.shuffle()
+    $('#character_race').val(oneRace[0])
+    if oneRace == "Human" || "Elf"
+      weight = Math.floor((Math.random()*110)+120)
+      $('#character_weight').val(weight)
+    else if oneRace == "Halfling"
+      weight = Math.floor((Math.random()*120)+60)
+      $('#character_weight').val(weight)
+    # set class/proffesion
+    classes = ["Fighter","Mage","Thief","Assassin","Thug","Psion","Hunter",
+                "Druid","Fight/Mage","Fighter/Thief","Mage/Assassin",
+                "Mage/Psion","Hunter/Mage","Psion/Theif"]
+    oneClass = classes.shuffle()
+    $('#character_career').val(oneClass[0])
+    # set gold
+    gold = Math.floor((Math.random()*400)+1)
+    $('#character_gold').val(gold)
+    # set base stats
+    # arrStats = []
+    # while arrStats.length < 8
+    #   randomnumber = Math.floor((Math.random()*18)+1)
+    #   found = false
+    #   i = 0
+    #   while i < arr.length
+    #     if arr[i] is randomnumber
+    #       found = true
+    #       break
+    #     i++
+    #   arr[arr.length] = randomnumber  unless found
+    # $('#character_intelligence').val(arrStats[0])
 
 
 $(document).ready(ready)
