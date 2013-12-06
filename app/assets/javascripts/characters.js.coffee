@@ -123,7 +123,7 @@ ready = ->
   randomNameGenerator()
 
   # random name click event
-  $('#button').click ->
+  $('.char-gen-button').click ->
     firstName = randomNameGenerator()
     lastName = randomNameGenerator()
     $('#character_name').val(firstName.substring(0,substringRandLimiter1) +

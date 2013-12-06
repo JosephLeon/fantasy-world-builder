@@ -239,10 +239,24 @@ input#submit {
   @include clear;
   width: auto;
   border: 0;
-  background: url(../images/ink-splotch.png) bottom right no-repeat;
-  padding: 0 40px 0 0;
-  font-size: 30px;
+  background: #3a2e1b;
+  padding: 7px 13px;
+  text-transform: uppercase;
+  color: $paper;
+  font: {
+    family: 'Old Standard TT', serif;
+    size: 24px;
+  }
   cursor: pointer;
+  border: 1px solid $brown;
+  border-radius: 3px;
+}
+.char-gen-button {
+  @extend input#submit;
+  display: inline-block;
+  float: right;
+  text-transform: none;
+  font-size: 20px;
 }
 #error_explanation {
   color: #f00;

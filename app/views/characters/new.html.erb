@@ -2,7 +2,9 @@
 <%= form_for(@character) do |f| %>
   <%= render 'shared/character_error_messages' %>
 
-  <h3 id="button">Generate Character</h3>
+  <div class="form-row">
+    <span class="char-gen-button">Generate Random Character</span>
+  </div>
 
   <div class="form-row">
     <%= f.label :name %>
@@ -145,7 +147,7 @@
   <%= f.label :notes %>
   <%= f.text_area :notes %>
 
-  <%= f.submit "Create Character.", id: "submit" %>
+  <%= f.submit "Create Character", id: "submit" %>
 
 <% end %>
 
