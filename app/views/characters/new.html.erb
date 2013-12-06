@@ -2,6 +2,8 @@
 <%= form_for(@character) do |f| %>
   <%= render 'shared/character_error_messages' %>
 
+  <h3 id="button">Generate Character</h3>
+
   <div class="form-row">
     <%= f.label :name %>
     <%= f.text_field :name %>
