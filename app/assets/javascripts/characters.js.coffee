@@ -22,8 +22,8 @@ ready = ->
   consonant = ["b","c","d","f","g","h","j","k","l","m","n","p","q",
                           "r","s","t","v","w","x","z"]
   vowel = ["a", "e", "i", "o", "u", "y"]
-  doubleConsonant = ["bh","ch","dr","fh","gb","ht","jr","kw","lr","mh","ns",
-                      "ph","qu", "rh","sm","th","vh","wr","xx","zz"]
+  doubleConsonant = ["ch","dr","fh","gh","ht","jr","kw","lr","mh","ns",
+                      "ph","qu", "rh","sm","th","vh","wr","xz","zh"]
   doubleVowel = ["ae","ea","ie","oa","uo","ya","ye","yi","yu","yo"]
   consonantComesFirst = Math.floor((Math.random()*10)+1)
   chooseSingle = Math.floor((Math.random()*10)+1)
@@ -121,7 +121,6 @@ ready = ->
     fullName = firstOne.capitalize() + secondOne + thirdOne + fourthOne + fifthOne
 
   randomNameGenerator()
-
 
   # random name click event
   $('#button').click ->
