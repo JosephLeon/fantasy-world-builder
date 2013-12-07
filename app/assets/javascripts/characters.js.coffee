@@ -127,7 +127,7 @@ ready = ->
     lastName = randomNameGenerator()
     $('#character_name').val(firstName.substring(0,substringRandLimiter1) +
       " " + lastName.substring(0,substringRandLimiter2))
-    # set level, calculate health, gold set vars for saves
+    # set level, calculate health, gold, vars for saves, skills
     level = Math.floor((Math.random()*25)+1)
     $('#character_level').val(level)
     $('#character_health').val(level * 10)
@@ -136,11 +136,8 @@ ready = ->
     $('#character_armor').val(level - 1)
     gold = Math.floor((Math.random()*9)+1) * level
     $('#character_gold').val(gold)
-    magic_save = level - 1
-    mind_save = level
-    force_save = level - 3
-    weather_save = level + 2
-    poison_save = level - 1
+    magic_save = mind_save = force_save = weather_save = poison_save = level
+    arrSkills = ["Running"]
     # set class/proffesion
     classes = ["Fighter","Mage","Thief","Assassin","Thug","Psion","Hunter",
                 "Druid","Fight/Mage","Fighter/Thief","Mage/Assassin",
@@ -185,6 +182,7 @@ ready = ->
       racialAdjForceSave = force_save
       racialAdjWeatherSave = weather_save
       racialAdjPoisonSave = poison_save
+      arrSkills.push ["Masonry","Brewing"]
     else if oneRace[0] == "Halfling"
       weight = Math.floor((Math.random()*80)+60)
       $('#character_weight').val(weight)
@@ -201,6 +199,7 @@ ready = ->
       racialAdjForceSave = force_save
       racialAdjWeatherSave = weather_save
       racialAdjPoisonSave = poison_save + 5
+      arrSkills.push ["Singing","Jokes"]
     else if oneRace[0] == "Elf"
       weight = Math.floor((Math.random()*120)+90)
       $('#character_weight').val(weight)
@@ -217,6 +216,7 @@ ready = ->
       racialAdjForceSave = force_save + 5
       racialAdjWeatherSave = weather_save
       racialAdjPoisonSave = poison_save
+      arrSkills.push ["Read Magic","Etiquette"]
     else
       weight = Math.floor((Math.random()*120)+120)
       $('#character_weight').val(weight)
@@ -248,6 +248,7 @@ ready = ->
       classAdjForceSave = racialAdjForceSave + 1
       classAdjWeatherSave = racialAdjWeatherSave + 1
       classAdjPoisonSave = racialAdjPoisonSave + 1
+      arrSkills.push ["Armor Repair","Jumping","Rolling","Horse Riding","Swimming"]
     else if characterClass = "Mage"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience + 1
@@ -262,6 +263,7 @@ ready = ->
       classAdjForceSave = racialAdjForceSave - 1
       classAdjWeatherSave = racialAdjWeatherSave - 2
       classAdjPoisonSave = racialAdjPoisonSave - 2
+      arrSkills.push ["Reading/Writing","Strategy Games","Book Binding"]
     else if characterClass = "Theif"
       classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience
@@ -276,6 +278,8 @@ ready = ->
       classAdjForceSave = racialAdjForceSave
       classAdjWeatherSave = racialAdjWeatherSave - 1
       classAdjPoisonSave = racialAdjPoisonSave + 4
+      arrSkills.push ["Acrobatics","Moving Silently","Hide in Shadows",
+                      "Lock Picking","Pick Pockets"]
     else if characterClass = "Psion"
       classAdjIntelligence = racialAdjInteligence
       classAdjPatience = racialAdjPatience + 2
@@ -290,6 +294,7 @@ ready = ->
       classAdjForceSave = racialAdjForceSave + 3
       classAdjWeatherSave = racialAdjWeatherSave - 2
       classAdjPoisonSave = racialAdjPoisonSave - 3
+      arrSkills.push ["Reading/Writing"]
     else if characterClass = "Assassin"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience + 1
@@ -304,6 +309,8 @@ ready = ->
       classAdjForceSave = racialAdjForceSave + 2
       classAdjWeatherSave = racialAdjWeatherSave + 2
       classAdjPoisonSave = racialAdjPoisonSave + 2
+      arrSkills.push ["Poisons","Death Strike","Moving Silently","Hide in Shadows",
+                      "Lock Picking"]
     else if characterClass = "Hunter"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience - 1
@@ -318,6 +325,7 @@ ready = ->
       classAdjForceSave = racialAdjForceSave
       classAdjWeatherSave = racialAdjWeatherSave + 7
       classAdjPoisonSave = racialAdjPoisonSave
+      arrSkills.push ["Tracking","Moving Silently","Hide in Shadows"]
     else if characterClass = "Druid"
       classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience + 3
@@ -332,6 +340,7 @@ ready = ->
       classAdjForceSave = racialAdjForceSave + 7
       classAdjWeatherSave = racialAdjWeatherSave + 7
       classAdjPoisonSave = racialAdjPoisonSave
+      arrSkills.push ["Animal Aspect","Animal Senses"]
     else
       classAdjIntelligence = racialAdjInteligence
       classAdjPatience = racialAdjPatience
@@ -347,7 +356,6 @@ ready = ->
       classAdjWeatherSave = racialAdjWeatherSave
       classAdjPoisonSave = racialAdjPoisonSave
     levelStatAdjustor = Math.round(level / 8)
-    console.log(levelStatAdjustor)
     $('#character_intelligence').val(classAdjIntelligence + levelStatAdjustor)
     $('#character_patience').val(classAdjPatience + levelStatAdjustor)
     $('#character_charisma').val(racialAdjCharisma + levelStatAdjustor)
@@ -361,6 +369,8 @@ ready = ->
     $('#character_force_save').val(classAdjForceSave)
     $('#character_weather_save').val(classAdjWeatherSave)
     $('#character_poison_save').val(classAdjPoisonSave)
+
+    $('#character_skills').val(arrSkills)
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
