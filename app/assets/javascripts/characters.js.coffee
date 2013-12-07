@@ -127,18 +127,20 @@ ready = ->
     lastName = randomNameGenerator()
     $('#character_name').val(firstName.substring(0,substringRandLimiter1) +
       " " + lastName.substring(0,substringRandLimiter2))
-    # set level, calculate health
-    level = Math.floor((Math.random()*18)+1)
+    # set level, calculate health, gold set vars for saves
+    level = Math.floor((Math.random()*25)+1)
     $('#character_level').val(level)
     $('#character_health').val(level * 10)
     $('#character_attack').val(level + 2)
     $('#character_defense').val(level)
     $('#character_armor').val(level - 1)
-    $('#character_magic_save').val(level - 1)
-    $('#character_mind_save').val(level)
-    $('#character_force_save').val(level - 3)
-    $('#character_weather_save').val(level + 2)
-    $('#character_poison_save').val(level - 1)
+    gold = Math.floor((Math.random()*9)+1) * level
+    $('#character_gold').val(gold)
+    magic_save = level - 1
+    mind_save = level
+    force_save = level - 3
+    weather_save = level + 2
+    poison_save = level - 1
     # set class/proffesion
     classes = ["Fighter","Mage","Thief","Assassin","Thug","Psion","Hunter",
                 "Druid","Fight/Mage","Fighter/Thief","Mage/Assassin",
@@ -146,9 +148,6 @@ ready = ->
     oneClass = classes.shuffle()
     characterClass = oneClass[0]
     $('#character_career').val(oneClass[0])
-    # set gold
-    gold = Math.floor((Math.random()*400)+1)
-    $('#character_gold').val(gold)
     # set base stats to variables (will adjust them later based )
     statCounter = 0
     maxNumStats = 8
@@ -165,15 +164,13 @@ ready = ->
     agility = statArray[5]
     constitution = statArray[6]
     endurance = statArray[7]
-    # set race, calculate weight, racial stat adjustments
+    # set race, calculate weight, racial stat/save adjustments
     races = ["Human","Dwarf","Elf","Halfling"]
     oneRace = races.shuffle()
     $('#character_race').val(oneRace[0])
     if oneRace[0] == "Dwarf"
       weight = Math.floor((Math.random()*140)+120)
       $('#character_weight').val(weight)
-      $('#character_magic_save').val(level + 5)
-      $('#character_mind_save').val(level + 3)
       $('#character_armor').val(level + 4)
       racialAdjInteligence = intelligence
       racialAdjPatience = patience
@@ -183,11 +180,14 @@ ready = ->
       racialAdjAgility = agility - 1
       racialAdjConsitution = constitution + 2
       racialAdjEndurance = endurance
-      $('#character_gold').val(gold + 30)
+      racialAdjMagicSave = magic_save + 5
+      racialAdjMindSave = mind_save + 2
+      racialAdjForceSave = force_save
+      racialAdjWeatherSave = weather_save
+      racialAdjPoisonSave = poison_save
     else if oneRace[0] == "Halfling"
       weight = Math.floor((Math.random()*80)+60)
       $('#character_weight').val(weight)
-      $('#character_poison_save').val(level + 4)
       racialAdjInteligence = intelligence
       racialAdjPatience = patience
       racialAdjCharisma = charisma + 3
@@ -196,12 +196,14 @@ ready = ->
       racialAdjAgility = agility + 3
       racialAdjConsitution = constitution - 1
       racialAdjEndurance = endurance - 1
+      racialAdjMagicSave = magic_save
+      racialAdjMindSave = mind_save
+      racialAdjForceSave = force_save
+      racialAdjWeatherSave = weather_save
+      racialAdjPoisonSave = poison_save + 5
     else if oneRace[0] == "Elf"
       weight = Math.floor((Math.random()*120)+90)
       $('#character_weight').val(weight)
-      $('#character_force_save').val(level)
-      $('#character_weather_save').val(level + 6)
-      $('#character_gold').val(gold - 10)
       racialAdjInteligence = intelligence + 2
       racialAdjPatience = patience + 3
       racialAdjCharisma = charisma
@@ -210,11 +212,14 @@ ready = ->
       racialAdjAgility = agility - 1
       racialAdjConsitution = constitution - 2
       racialAdjEndurance = endurance
+      racialAdjMagicSave = magic_save
+      racialAdjMindSave = mind_save + 5
+      racialAdjForceSave = force_save + 5
+      racialAdjWeatherSave = weather_save
+      racialAdjPoisonSave = poison_save
     else
       weight = Math.floor((Math.random()*120)+120)
       $('#character_weight').val(weight)
-      $('#character_armor').val(level + 2)
-      $('#character_gold').val(gold + 10)
       racialAdjInteligence = intelligence
       racialAdjPatience = patience
       racialAdjCharisma = charisma
@@ -223,92 +228,139 @@ ready = ->
       racialAdjAgility = agility
       racialAdjConsitution = constitution
       racialAdjEndurance = endurance
-    # classes = ["Fighter","Mage","Thief","Assassin","Thug","Psion","Hunter",
-    #             "Druid","Fight/Mage","Fighter/Thief","Mage/Assassin",
-    #             "Mage/Psion","Hunter/Mage","Psion/Theif"]
+      racialAdjMagicSave = magic_save
+      racialAdjMindSave = mind_save
+      racialAdjForceSave = force_save
+      racialAdjWeatherSave = weather_save
+      racialAdjPoisonSave = poison_save
     # Adjust stats based on class
     if characterClass == "Fighter"
       classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience - 1
-      racialAdjCharisma = racialAdjCharisma - 1
-      racialAdjPerception = racialAdjPerception - 1
-      racialAdjStrength = racialAdjStrength + 1
-      racialAdjAgility = racialAdjAgility + 1
-      racialAdjConsitution = racialAdjConsitution + 1
-      racialAdjEndurance = racialAdjEndurance + 1
+      classAdjCharisma = racialAdjCharisma - 1
+      classAdjPerception = racialAdjPerception - 1
+      classAdjStrength = racialAdjStrength + 1
+      classAdjAgility = racialAdjAgility + 1
+      classAdjConsitution = racialAdjConsitution + 1
+      classAdjEndurance = racialAdjEndurance + 1
+      classAdjMagicSave = racialAdjMagicSave - 1
+      classAdjMindSave = racialAdjMindSave - 2
+      classAdjForceSave = racialAdjForceSave + 1
+      classAdjWeatherSave = racialAdjWeatherSave + 1
+      classAdjPoisonSave = racialAdjPoisonSave + 1
     else if characterClass = "Mage"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience + 1
-      racialAdjCharisma = racialAdjCharisma
-      racialAdjPerception = racialAdjPerception + 1
-      racialAdjStrength = racialAdjStrength - 1
-      racialAdjAgility = racialAdjAgility - 1
-      racialAdjConsitution = racialAdjConsitution - 1
-      racialAdjEndurance = racialAdjEndurance - 1
+      classAdjCharisma = racialAdjCharisma
+      classAdjPerception = racialAdjPerception + 1
+      classAdjStrength = racialAdjStrength - 1
+      classAdjAgility = racialAdjAgility - 1
+      classAdjConsitution = racialAdjConsitution - 1
+      classAdjEndurance = racialAdjEndurance - 1
+      classAdjMagicSave = racialAdjMagicSave + 2
+      classAdjMindSave = racialAdjMindSave + 2
+      classAdjForceSave = racialAdjForceSave - 1
+      classAdjWeatherSave = racialAdjWeatherSave - 2
+      classAdjPoisonSave = racialAdjPoisonSave - 2
     else if characterClass = "Theif"
       classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience
-      racialAdjCharisma = racialAdjCharisma + 1
-      racialAdjPerception = racialAdjPerception
-      racialAdjStrength = racialAdjStrength - 1
-      racialAdjAgility = racialAdjAgility + 2
-      racialAdjConsitution = racialAdjConsitution - 1
-      racialAdjEndurance = racialAdjEndurance
+      classAdjCharisma = racialAdjCharisma + 1
+      classAdjPerception = racialAdjPerception
+      classAdjStrength = racialAdjStrength - 1
+      classAdjAgility = racialAdjAgility + 2
+      classAdjConsitution = racialAdjConsitution - 1
+      classAdjEndurance = racialAdjEndurance
+      classAdjMagicSave = racialAdjMagicSave -1
+      classAdjMindSave = racialAdjMindSave + 1
+      classAdjForceSave = racialAdjForceSave
+      classAdjWeatherSave = racialAdjWeatherSave - 1
+      classAdjPoisonSave = racialAdjPoisonSave + 4
     else if characterClass = "Psion"
       classAdjIntelligence = racialAdjInteligence
       classAdjPatience = racialAdjPatience + 2
-      racialAdjCharisma = racialAdjCharisma
-      racialAdjPerception = racialAdjPerception + 2
-      racialAdjStrength = racialAdjStrength - 1
-      racialAdjAgility = racialAdjAgility - 1
-      racialAdjConsitution = racialAdjConsitution - 1
-      racialAdjEndurance = racialAdjEndurance - 1
+      classAdjCharisma = racialAdjCharisma
+      classAdjPerception = racialAdjPerception + 2
+      classAdjStrength = racialAdjStrength - 1
+      classAdjAgility = racialAdjAgility - 1
+      classAdjConsitution = racialAdjConsitution - 1
+      classAdjEndurance = racialAdjEndurance - 1
+      classAdjMagicSave = racialAdjMagicSave
+      classAdjMindSave = racialAdjMindSave + 5
+      classAdjForceSave = racialAdjForceSave + 3
+      classAdjWeatherSave = racialAdjWeatherSave - 2
+      classAdjPoisonSave = racialAdjPoisonSave - 3
     else if characterClass = "Assassin"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience + 1
-      racialAdjCharisma = racialAdjCharisma - 4
-      racialAdjPerception = racialAdjPerception - 1
-      racialAdjStrength = racialAdjStrength + 2
-      racialAdjAgility = racialAdjAgility
-      racialAdjConsitution = racialAdjConsitution - 1
-      racialAdjEndurance = racialAdjEndurance - 1
+      classAdjCharisma = racialAdjCharisma - 4
+      classAdjPerception = racialAdjPerception - 1
+      classAdjStrength = racialAdjStrength + 2
+      classAdjAgility = racialAdjAgility
+      classAdjConsitution = racialAdjConsitution - 1
+      classAdjEndurance = racialAdjEndurance - 1
+      classAdjMagicSave = racialAdjMagicSave + 2
+      classAdjMindSave = racialAdjMindSave + 2
+      classAdjForceSave = racialAdjForceSave + 2
+      classAdjWeatherSave = racialAdjWeatherSave + 2
+      classAdjPoisonSave = racialAdjPoisonSave + 2
     else if characterClass = "Hunter"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience - 1
-      racialAdjCharisma = racialAdjCharisma - 4
-      racialAdjPerception = racialAdjPerception + 2
-      racialAdjStrength = racialAdjStrength - 1
-      racialAdjAgility = racialAdjAgility - 1
-      racialAdjConsitution = racialAdjConsitution + 1
-      racialAdjEndurance = racialAdjEndurance + 1
+      classAdjCharisma = racialAdjCharisma - 4
+      classAdjPerception = racialAdjPerception + 2
+      classAdjStrength = racialAdjStrength - 1
+      classAdjAgility = racialAdjAgility - 1
+      classAdjConsitution = racialAdjConsitution + 1
+      classAdjEndurance = racialAdjEndurance + 1
+      classAdjMagicSave = racialAdjMagicSave
+      classAdjMindSave = racialAdjMindSave + 1
+      classAdjForceSave = racialAdjForceSave
+      classAdjWeatherSave = racialAdjWeatherSave + 7
+      classAdjPoisonSave = racialAdjPoisonSave
     else if characterClass = "Druid"
       classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience + 3
-      racialAdjCharisma = racialAdjCharisma - 2
-      racialAdjPerception = racialAdjPerception - 1
-      racialAdjStrength = racialAdjStrength - 1
-      racialAdjAgility = racialAdjAgility - 1
-      racialAdjConsitution = racialAdjConsitution + 3
-      racialAdjEndurance = racialAdjEndurance - 1
+      classAdjCharisma = racialAdjCharisma - 2
+      classAdjPerception = racialAdjPerception - 1
+      classAdjStrength = racialAdjStrength - 1
+      classAdjAgility = racialAdjAgility - 1
+      classAdjConsitution = racialAdjConsitution + 3
+      classAdjEndurance = racialAdjEndurance - 1
+      classAdjMagicSave = racialAdjMagicSave
+      classAdjMindSave = racialAdjMindSave
+      classAdjForceSave = racialAdjForceSave + 7
+      classAdjWeatherSave = racialAdjWeatherSave + 7
+      classAdjPoisonSave = racialAdjPoisonSave
     else
       classAdjIntelligence = racialAdjInteligence
       classAdjPatience = racialAdjPatience
-      racialAdjCharisma = racialAdjCharisma
-      racialAdjPerception = racialAdjPerception
-      racialAdjStrength = racialAdjStrength
-      racialAdjAgility = racialAdjAgility
-      racialAdjConsitution = racialAdjConsitution
-      racialAdjEndurance = racialAdjEndurance
-    $('#character_intelligence').val(classAdjIntelligence)
-    $('#character_patience').val(classAdjPatience)
-    $('#character_charisma').val(racialAdjCharisma)
-    $('#character_perception').val(racialAdjPerception)
-    $('#character_strength').val(racialAdjStrength)
-    $('#character_agility').val(racialAdjAgility)
-    $('#character_constitution').val(racialAdjConsitution)
-    $('#character_endurance').val(racialAdjEndurance)
-
-
+      classAdjCharisma = racialAdjCharisma
+      classAdjPerception = racialAdjPerception
+      classAdjStrength = racialAdjStrength
+      classAdjAgility = racialAdjAgility
+      classAdjConsitution = racialAdjConsitution
+      classAdjEndurance = racialAdjEndurance
+      classAdjMagicSave = racialAdjMagicSave
+      classAdjMindSave = racialAdjMindSave
+      classAdjForceSave = racialAdjForceSave
+      classAdjWeatherSave = racialAdjWeatherSave
+      classAdjPoisonSave = racialAdjPoisonSave
+    levelStatAdjustor = Math.round(level / 8)
+    console.log(levelStatAdjustor)
+    $('#character_intelligence').val(classAdjIntelligence + levelStatAdjustor)
+    $('#character_patience').val(classAdjPatience + levelStatAdjustor)
+    $('#character_charisma').val(racialAdjCharisma + levelStatAdjustor)
+    $('#character_perception').val(racialAdjPerception + levelStatAdjustor)
+    $('#character_strength').val(racialAdjStrength + levelStatAdjustor)
+    $('#character_agility').val(racialAdjAgility + levelStatAdjustor)
+    $('#character_constitution').val(racialAdjConsitution + levelStatAdjustor)
+    $('#character_endurance').val(racialAdjEndurance + levelStatAdjustor)
+    $('#character_magic_save').val(classAdjMagicSave)
+    $('#character_mind_save').val(classAdjMindSave)
+    $('#character_force_save').val(classAdjForceSave)
+    $('#character_weather_save').val(classAdjWeatherSave)
+    $('#character_poison_save').val(classAdjPoisonSave)
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
