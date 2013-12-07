@@ -156,6 +156,15 @@ ready = ->
       stat = Math.floor((Math.random()*14)+6)
       statArray.push stat
       statCounter++
+    intelligence = statArray[0]
+    # intelligence').val(statArray[0])
+    # patience').val(statArray[1])
+    # charisma').val(statArray[2])
+    # perception').val(statArray[3])
+    # strength').val(statArray[4])
+    # agility').val(statArray[5])
+    # constitution').val(statArray[6])
+    # endurance').val(statArray[7])
     $('#character_intelligence').val(statArray[0])
     $('#character_patience').val(statArray[1])
     $('#character_charisma').val(statArray[2])
@@ -174,19 +183,18 @@ ready = ->
       $('#character_magic_save').val(level + 5)
       $('#character_mind_save').val(level + 3)
       $('#character_armor').val(level + 4)
-      $('#character_patience').val(statArray[1] + 1)
       $('#character_constitution').val(statArray[6] + 2)
       $('#character_strength').val(statArray[4] + 2)
       $('#character_agility').val(statArray[5] - 1)
       $('#character_charisma').val(statArray[2] - 3)
-      $('#character_intelligence').val(statArray[0] - 1)
+      $('#character_gold').val(gold + 30)
     else if oneRace[0] == "Halfling"
       weight = Math.floor((Math.random()*80)+60)
       $('#character_weight').val(weight)
       $('#character_poison_save').val(level + 4)
       $('#character_agility').val(statArray[5] + 2)
       $('#character_strength').val(statArray[4] - 2)
-      $('#character_intelligence').val(statArray[0] + 2)
+      $('#character_intelligence').val(statArray[0] + 1)
     else if oneRace[0] == "Elf"
       weight = Math.floor((Math.random()*120)+90)
       $('#character_weight').val(weight)
@@ -195,15 +203,19 @@ ready = ->
       $('#character_intelligence').val(statArray[0] + 1)
       $('#character_patience').val(statArray[1] + 2)
       $('#character_strength').val(statArray[4] - 2)
+      $('#character_gold').val(gold - 10)
     else
       weight = Math.floor((Math.random()*120)+120)
       $('#character_weight').val(weight)
       $('#character_armor').val(level + 2)
-      $('#character_patience').val(statArray[1] - 2)
+      $('#character_patience').val(statArray[1] - 1)
       $('#character_strength').val(statArray[4] + 1)
-      $('#character_endurance').val(statArray[7] + 2)
-      $('#character_charisma').val(statArray[0] + 2)
-
+      $('#character_endurance').val(statArray[7] + 1)
+      $('#character_charisma').val(statArray[0] + 1)
+      $('#character_gold').val(gold + 10)
+    # classes = ["Fighter","Mage","Thief","Assassin","Thug","Psion","Hunter",
+    #             "Druid","Fight/Mage","Fighter/Thief","Mage/Assassin",
+    #             "Mage/Psion","Hunter/Mage","Psion/Theif"]
 
 
 $(document).ready(ready)
