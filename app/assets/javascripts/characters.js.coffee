@@ -145,7 +145,7 @@ ready = ->
                 "Mage/Psion","Hunter/Mage","Psion/Theif"]
     oneClass = classes.shuffle()
     characterClass = oneClass[0]
-    $('#character_career').val(oneClass[0]) # Pull later for profession stat mods
+    $('#character_career').val(oneClass[0])
     # set gold
     gold = Math.floor((Math.random()*400)+1)
     $('#character_gold').val(gold)
@@ -190,25 +190,25 @@ ready = ->
       $('#character_poison_save').val(level + 4)
       racialAdjInteligence = intelligence
       racialAdjPatience = patience
-      racialAdjCharisma = charisma
+      racialAdjCharisma = charisma + 3
       racialAdjPerception = perception
-      racialAdjStrength = strength
-      racialAdjAgility = agility
-      racialAdjConsitution = constitution
-      racialAdjEndurance = endurance
+      racialAdjStrength = strength - 2
+      racialAdjAgility = agility + 3
+      racialAdjConsitution = constitution - 1
+      racialAdjEndurance = endurance - 1
     else if oneRace[0] == "Elf"
       weight = Math.floor((Math.random()*120)+90)
       $('#character_weight').val(weight)
       $('#character_force_save').val(level)
       $('#character_weather_save').val(level + 6)
       $('#character_gold').val(gold - 10)
-      racialAdjInteligence = intelligence
-      racialAdjPatience = patience
+      racialAdjInteligence = intelligence + 2
+      racialAdjPatience = patience + 3
       racialAdjCharisma = charisma
       racialAdjPerception = perception
-      racialAdjStrength = strength
-      racialAdjAgility = agility
-      racialAdjConsitution = constitution
+      racialAdjStrength = strength - 1
+      racialAdjAgility = agility - 1
+      racialAdjConsitution = constitution - 2
       racialAdjEndurance = endurance
     else
       weight = Math.floor((Math.random()*120)+120)
@@ -231,29 +231,65 @@ ready = ->
       classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience - 1
       racialAdjCharisma = racialAdjCharisma - 1
-      racialAdjPerception = racialAdjPerception
+      racialAdjPerception = racialAdjPerception - 1
       racialAdjStrength = racialAdjStrength + 1
-      racialAdjAgility = racialAdjAgility
+      racialAdjAgility = racialAdjAgility + 1
       racialAdjConsitution = racialAdjConsitution + 1
       racialAdjEndurance = racialAdjEndurance + 1
     else if characterClass = "Mage"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience + 1
       racialAdjCharisma = racialAdjCharisma
-      racialAdjPerception = racialAdjPerception
+      racialAdjPerception = racialAdjPerception + 1
       racialAdjStrength = racialAdjStrength - 1
       racialAdjAgility = racialAdjAgility - 1
       racialAdjConsitution = racialAdjConsitution - 1
       racialAdjEndurance = racialAdjEndurance - 1
     else if characterClass = "Theif"
-      classAdjIntelligence = racialAdjInteligence
+      classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience
       racialAdjCharisma = racialAdjCharisma + 1
       racialAdjPerception = racialAdjPerception
-      racialAdjStrength = racialAdjStrength
-      racialAdjAgility = racialAdjAgility + 1
-      racialAdjConsitution = racialAdjConsitution
+      racialAdjStrength = racialAdjStrength - 1
+      racialAdjAgility = racialAdjAgility + 2
+      racialAdjConsitution = racialAdjConsitution - 1
       racialAdjEndurance = racialAdjEndurance
+    else if characterClass = "Psion"
+      classAdjIntelligence = racialAdjInteligence
+      classAdjPatience = racialAdjPatience + 2
+      racialAdjCharisma = racialAdjCharisma
+      racialAdjPerception = racialAdjPerception + 2
+      racialAdjStrength = racialAdjStrength - 1
+      racialAdjAgility = racialAdjAgility - 1
+      racialAdjConsitution = racialAdjConsitution - 1
+      racialAdjEndurance = racialAdjEndurance - 1
+    else if characterClass = "Assassin"
+      classAdjIntelligence = racialAdjInteligence + 2
+      classAdjPatience = racialAdjPatience + 1
+      racialAdjCharisma = racialAdjCharisma - 4
+      racialAdjPerception = racialAdjPerception - 1
+      racialAdjStrength = racialAdjStrength + 2
+      racialAdjAgility = racialAdjAgility
+      racialAdjConsitution = racialAdjConsitution - 1
+      racialAdjEndurance = racialAdjEndurance - 1
+    else if characterClass = "Hunter"
+      classAdjIntelligence = racialAdjInteligence + 2
+      classAdjPatience = racialAdjPatience - 1
+      racialAdjCharisma = racialAdjCharisma - 4
+      racialAdjPerception = racialAdjPerception + 2
+      racialAdjStrength = racialAdjStrength - 1
+      racialAdjAgility = racialAdjAgility - 1
+      racialAdjConsitution = racialAdjConsitution + 1
+      racialAdjEndurance = racialAdjEndurance + 1
+    else if characterClass = "Druid"
+      classAdjIntelligence = racialAdjInteligence - 1
+      classAdjPatience = racialAdjPatience + 3
+      racialAdjCharisma = racialAdjCharisma - 2
+      racialAdjPerception = racialAdjPerception - 1
+      racialAdjStrength = racialAdjStrength - 1
+      racialAdjAgility = racialAdjAgility - 1
+      racialAdjConsitution = racialAdjConsitution + 3
+      racialAdjEndurance = racialAdjEndurance - 1
     else
       classAdjIntelligence = racialAdjInteligence
       classAdjPatience = racialAdjPatience
