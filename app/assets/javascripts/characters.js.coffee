@@ -163,6 +163,7 @@ ready = ->
       $('#character_weight').val(weight)
       $('#character_armor').val(level + 4)
       $('#character_languages').val("Common, Dwarven")
+      $('#character_abilities').val("Detect goblin kind, See in the dark")
       racialAdjInteligence = intelligence
       racialAdjPatience = patience
       racialAdjCharisma = charisma - 3
@@ -181,6 +182,7 @@ ready = ->
       weight = Math.floor((Math.random()*80)+60)
       $('#character_weight').val(weight)
       $('#character_languages').val("Common, Halfling")
+      $('#character_abilities').val("See in the dark, Hide")
       racialAdjInteligence = intelligence
       racialAdjPatience = patience
       racialAdjCharisma = charisma + 3
@@ -199,6 +201,7 @@ ready = ->
       weight = Math.floor((Math.random()*120)+90)
       $('#character_weight').val(weight)
       $('#character_languages').val("Common, Elven, Dwarven")
+      $('#character_abilities').val("Less sleep, Slow aging")
       racialAdjInteligence = intelligence + 2
       racialAdjPatience = patience + 3
       racialAdjCharisma = charisma
@@ -237,7 +240,6 @@ ready = ->
                 "Assassin/Psion","Hunter/Psion"]
     classShuffle = classes.shuffle()
     characterClass = classShuffle[0]
-    console.log("character class: " + characterClass)
     $('#character_career').val(characterClass)
     if characterClass is "Fighter"
       classAdjIntelligence = racialAdjInteligence - 1
@@ -270,6 +272,7 @@ ready = ->
       classAdjPoisonSave = racialAdjPoisonSave + 4
     else if characterClass is "Mage"  or
             characterClass is "Mage/Thief" or
+            characterClass is "Assassin/Mage" or
             characterClass is "Mage/Fighter"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience + 1
@@ -284,21 +287,42 @@ ready = ->
       classAdjForceSave = racialAdjForceSave - 1
       classAdjWeatherSave = racialAdjWeatherSave - 2
       classAdjPoisonSave = racialAdjPoisonSave - 2
-      console.log(level)
-      if level > 25
-        $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Wish, Summon Demon/Angel, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
-      else if level > 20
-        $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
-      else if level > 15
-        $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Invisibility, Force of Will, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
-      else if level > 10
-        $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
-      else if level > 5
-        $("#character_spells").val("Fireball, Charm, Ice Wall, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
-      else
-        $("#character_spells").val("Charm, Minor Bolt, Levitate, Weather Resist, Armor, Open Lock, Slick Ground")
+      if characterClass is "Mage" # set spells for mage
+        if level > 25
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Wish, Summon Demon/Angel, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level > 20
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level > 15
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Invisibility, Force of Will, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level > 10
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level > 5
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else
+          $("#character_spells").val("Charm, Minor Bolt, Levitate, Weather Resist, Armor, Open Lock, Slick Ground")
+        arrSkills.push ["Read Magic, Reading & Writing, Ancient Languages, Protection Circles"]
+      else # set skills and spells for other hybrid mage classes
+        if level/2 > 25
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Wish, Summon Demon/Angel, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level/2 > 20
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level/2 > 15
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Invisibility, Force of Will, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level/2 > 10
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level/2 > 5
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else
+          $("#character_spells").val("Charm, Minor Bolt, Levitate, Weather Resist, Armor, Open Lock, Slick Ground")
+        if characterClass is "Assassin/Mage"
+          arrSkills.push ["Read Magic, Reading & Writing, Moving Silently","Hide in Shadows", "Lock Picking"]
+        else if characterClass is "Mage/Thief"
+          arrSkills.push ["Read Magic, Reading & Writing, Moving Silently","Hide in Shadows", "Lock Picking"]
+        else
+          arrSkills.push ["Read Magic, Reading & Writing, Combat Casting"]
     else if characterClass is "Psion" or
-            characterClass is "Hunter/Psion"
+            characterClass is "Hunter/Psion" or
+            characterClass is "Assassin/Psion"
       classAdjIntelligence = racialAdjInteligence
       classAdjPatience = racialAdjPatience + 2
       classAdjCharisma = racialAdjCharisma
@@ -312,10 +336,35 @@ ready = ->
       classAdjForceSave = racialAdjForceSave + 3
       classAdjWeatherSave = racialAdjWeatherSave - 2
       classAdjPoisonSave = racialAdjPoisonSave - 3
-      arrSkills.push ["Reading/Writing"]
-    else if characterClass is "Assassin" or
-            characterClass is "Assassin/Mage" or
-            characterClass is "Assassin/Psion"
+      if characterClass is "Psion"
+        if level > 25
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Wish, Summon Demon/Angel, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level > 20
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level > 15
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Invisibility, Force of Will, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level > 10
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level > 5
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else
+          $("#character_spells").val("Charm, Minor Bolt, Levitate, Weather Resist, Armor, Open Lock, Slick Ground")
+        arrSkills.push ["Reading & Writing, Ancient Languages, Power Areas"]
+      else
+        if level/2 > 25
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Wish, Summon Demon/Angel, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level/2 > 20
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level/2 > 15
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Invisibility, Force of Will, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level/2 > 10
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else if level/2 > 5
+          $("#character_spells").val("Fireball, Charm, Ice Wall, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        else
+          $("#character_spells").val("Charm, Minor Bolt, Levitate, Weather Resist, Armor, Open Lock, Slick Ground")
+        arrSkills.push ["Read Magic, Reading & Writing, Moving Silently","Hide in Shadows", "Lock Picking"]
+    else if characterClass is "Assassin"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience + 1
       classAdjCharisma = racialAdjCharisma - 4
