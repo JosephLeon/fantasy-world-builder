@@ -142,18 +142,13 @@ ready = ->
     statCounter = 0
     maxNumStats = 8
     statArray = []
+    statVarArray = ["intelligence","patience","charisma","perception","strength",
+                    "agility","constitution","endurance"]
     while statCounter < maxNumStats
       stat = Math.floor((Math.random()*14)+6)
       statArray.push stat
+      window[statVarArray[statCounter]] = statArray[statCounter]
       statCounter++
-    intelligence = statArray[0]
-    patience = statArray[1]
-    charisma = statArray[2]
-    perception = statArray[3]
-    strength = statArray[4]
-    agility = statArray[5]
-    constitution = statArray[6]
-    endurance = statArray[7]
     # set race, calculate weight, racial stat/save adjustments
     races = ["Human","Dwarf","Elf","Halfling"]
     oneRace = races.shuffle()
@@ -288,7 +283,7 @@ ready = ->
       classAdjForceSave = racialAdjForceSave - 1
       classAdjWeatherSave = racialAdjWeatherSave - 2
       classAdjPoisonSave = racialAdjPoisonSave - 2
-      if characterClass is "Mage" # set spells for mage
+      if characterClass is "Mage" # set skills and spells for mage
         if level > 25
           $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Wish, Summon Demon/Angel, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
         else if level > 20
@@ -337,7 +332,7 @@ ready = ->
       classAdjForceSave = racialAdjForceSave + 3
       classAdjWeatherSave = racialAdjWeatherSave - 2
       classAdjPoisonSave = racialAdjPoisonSave - 3
-      if characterClass is "Psion"
+      if characterClass is "Psion" # set powers and skills for psion
         if level > 25
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 10,000kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self), Detect Life, Astral Travel, Banish, See Future, Disintegrate, Teleport")
         else if level > 20
@@ -351,7 +346,7 @@ ready = ->
         else
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 5kg")
         arrSkills.push ["Reading & Writing, Ancient Languages, Power Areas"]
-      else
+      else # set powers and skills for psion hybrids
         if level/2 > 25
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 10,000kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self), Detect Life, Astral Travel, Banish, See Future, Disintegrate, Teleport")
         else if level/2 > 20
