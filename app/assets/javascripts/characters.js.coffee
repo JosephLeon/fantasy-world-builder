@@ -351,15 +351,15 @@ ready = ->
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 5kg")
         arrSkills.push ["Reading & Writing, Ancient Languages, Power Areas"]
       else
-        if level > 25
+        if level/2 > 25
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 10,000kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self), Detect Life, Astral Travel, Banish, See Future, Disintegrate, Teleport")
-        else if level > 20
+        else if level/2 > 20
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 2,000kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self), Detect Life, Astral Travel, Banish")
-        else if level > 15
+        else if level/2 > 15
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 500kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self)")
-        else if level > 10
+        else if level/2 > 10
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 100kg, Telepathy (Neutral), Defense Body Composition, Jump")
-        else if level > 5
+        else if level/2 > 5
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 25kg, Telepathy (Allies)")
         else
           $("#character_spells").val("Read Emotion, Detect Lie, Telekinisis 5kg")
@@ -394,6 +394,18 @@ ready = ->
       classAdjForceSave = racialAdjForceSave
       classAdjWeatherSave = racialAdjWeatherSave + 7
       classAdjPoisonSave = racialAdjPoisonSave
+      if level/2 > 25
+        $("#character_spells").val("Lightning, Charm Animal, Ice Wall, Fly, Major Weather, Invisibility, Force of Will, Destiny, Banish Demon/Angel, Banish Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Slick Ground, Animate Vines")
+      else if level/2 > 20
+        $("#character_spells").val("Lightning, Charm Animal, Ice Wall, Fly, Weather, Invisibility, Force of Will, Banish Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Slick Ground, Animate Vines")
+      else if level/2 > 15
+        $("#character_spells").val("Lightning, Charm Animal, Ice Wall, Fly, Invisibility, Force of Will, Banish Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Slick Ground, Animate Vines")
+      else if level/2 > 10
+        $("#character_spells").val("Lightning, Charm Animal, Ice Wall, Fly, Banish Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Slick Ground, Animate Vines")
+      else if level/2 > 5
+        $("#character_spells").val("Lightning, Charm Animal, Ice Wall, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Slick Ground, Animate Vines")
+      else
+        $("#character_spells").val("Charm Animal, Minor Bolt, Levitate, Weather Resist, Armor, Slick Ground")
       arrSkills.push ["Tracking","Moving Silently","Hide in Shadows"]
     else if characterClass is "Druid"
       classAdjIntelligence = racialAdjInteligence - 1
@@ -409,6 +421,18 @@ ready = ->
       classAdjForceSave = racialAdjForceSave + 7
       classAdjWeatherSave = racialAdjWeatherSave + 7
       classAdjPoisonSave = racialAdjPoisonSave
+      if level > 25
+        $("#character_spells").val("Lightning, Charm Animal, Ice Wall, Fly, Major Weather, Invisibility, Force of Will, Destiny, Banish Demon/Angel, Banish Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Slick Ground, Animate Vines")
+      else if level > 20
+        $("#character_spells").val("Lightning, Charm Animal, Ice Wall, Fly, Weather, Invisibility, Force of Will, Banish Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Slick Ground, Animate Vines")
+      else if level > 15
+        $("#character_spells").val("Lightning, Charm Animal, Ice Wall, Fly, Invisibility, Force of Will, Banish Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Slick Ground, Animate Vines")
+      else if level > 10
+        $("#character_spells").val("Lightning, Charm Animal, Ice Wall, Fly, Banish Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Slick Ground, Animate Vines")
+      else if level > 5
+        $("#character_spells").val("Lightning, Charm Animal, Ice Wall, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Slick Ground, Animate Vines")
+      else
+        $("#character_spells").val("Charm Animal, Minor Bolt, Levitate, Weather Resist, Armor, Slick Ground")
       arrSkills.push ["Animal Aspect","Animal Senses"]
     else
       classAdjIntelligence = racialAdjInteligence
