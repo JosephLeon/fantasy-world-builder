@@ -28,10 +28,10 @@ ready = ->
                         "ph","qu", "rh","sm","th","vh","wr","xz","zh"]
     doubleVowel = ["ae","ea","ie","oa","uo","ya","ye","yi","yu","yo"]
     consonantComesFirst = Math.floor((Math.random()*10)+1)
-    chooseSingle = Math.floor((Math.random()*10)+1)
-    chooseSecond = Math.floor((Math.random()*10)+1)
-    substringRandLimiter1 = Math.floor((Math.random()*5)+3)
-    substringRandLimiter2 = Math.floor((Math.random()*5)+3)
+    chooseSingle = chooseSecond = Math.floor((Math.random()*10)+1)
+    #chooseSecond = Math.floor((Math.random()*10)+1)
+    substringRandLimiter1 = substringRandLimiter2 = Math.floor((Math.random()*5)+3)
+    #substringRandLimiter2 = Math.floor((Math.random()*5)+3)
     randomNameGenerator = ->
       if isOdd(consonantComesFirst)
         if isOdd(chooseSingle) # first letter consonant
