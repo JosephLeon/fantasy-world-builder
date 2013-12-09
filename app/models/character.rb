@@ -10,7 +10,7 @@ class Character < ActiveRecord::Base
   end
 
   validates_presence_of :name, :career, :race, :attack, :defense, :armor,
-                :weapon, :languages, :description, :universe_id
+                :languages, :description, :universe_id
 
   validates_length_of :name,  :maximum => 128,
                               :too_long => "Can't be more than 128 characters."

@@ -220,6 +220,7 @@ ready = ->
       weight = Math.floor((Math.random()*120)+120)
       $('#character_weight').val(weight)
       $('#character_languages').val("Common")
+      $('#character_abilities').val("10% better prices")
       racialAdjInteligence = intelligence
       racialAdjPatience = patience
       racialAdjCharisma = charisma
