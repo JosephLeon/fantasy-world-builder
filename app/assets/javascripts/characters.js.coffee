@@ -138,13 +138,11 @@ ready = ->
     $('#character_gold').val(gold)
     magic_save = mind_save = force_save = weather_save = poison_save = level
     arrSkills = []
-    # set base stats to variables (will adjust them later based )
+    # set base stats to variables
     statCounter = 0
-    maxNumStats = 8
     statArray = []
-    statVarArray = ["intelligence","patience","charisma","perception","strength",
-                    "agility","constitution","endurance"]
-    while statCounter < maxNumStats
+    statVarArray = ["intelligence","patience","charisma","perception","strength","agility","constitution","endurance"]
+    while statCounter < statVarArray.length
       stat = Math.floor((Math.random()*14)+6)
       statArray.push stat
       window[statVarArray[statCounter]] = statArray[statCounter]
