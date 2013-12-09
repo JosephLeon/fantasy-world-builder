@@ -137,14 +137,7 @@ ready = ->
     gold = Math.floor((Math.random()*9)+1) * level
     $('#character_gold').val(gold)
     magic_save = mind_save = force_save = weather_save = poison_save = level
-    arrSkills = ["Running"]
-    # set class/proffesion
-    classes = ["Fighter","Mage","Thief","Assassin","Thug","Psion","Hunter",
-                "Druid","Fight/Mage","Fighter/Thief","Mage/Assassin",
-                "Mage/Psion","Hunter/Mage","Psion/Theif"]
-    oneClass = classes.shuffle()
-    characterClass = oneClass[0]
-    $('#character_career').val(oneClass[0])
+    arrSkills = []
     # set base stats to variables (will adjust them later based )
     statCounter = 0
     maxNumStats = 8
@@ -169,13 +162,14 @@ ready = ->
       weight = Math.floor((Math.random()*140)+120)
       $('#character_weight').val(weight)
       $('#character_armor').val(level + 4)
+      $('#character_languages').val("Common, Dwarven")
       racialAdjInteligence = intelligence
       racialAdjPatience = patience
       racialAdjCharisma = charisma - 3
       racialAdjPerception = perception
       racialAdjStrength = strength + 2
       racialAdjAgility = agility - 1
-      racialAdjConsitution = constitution + 2
+      racialAdjConstitution = constitution + 2
       racialAdjEndurance = endurance
       racialAdjMagicSave = magic_save + 5
       racialAdjMindSave = mind_save + 2
@@ -186,13 +180,14 @@ ready = ->
     else if oneRace[0] == "Halfling"
       weight = Math.floor((Math.random()*80)+60)
       $('#character_weight').val(weight)
+      $('#character_languages').val("Common, Halfling")
       racialAdjInteligence = intelligence
       racialAdjPatience = patience
       racialAdjCharisma = charisma + 3
       racialAdjPerception = perception
       racialAdjStrength = strength - 2
       racialAdjAgility = agility + 3
-      racialAdjConsitution = constitution - 1
+      racialAdjConstitution = constitution - 1
       racialAdjEndurance = endurance - 1
       racialAdjMagicSave = magic_save
       racialAdjMindSave = mind_save
@@ -203,13 +198,14 @@ ready = ->
     else if oneRace[0] == "Elf"
       weight = Math.floor((Math.random()*120)+90)
       $('#character_weight').val(weight)
+      $('#character_languages').val("Common, Elven, Dwarven")
       racialAdjInteligence = intelligence + 2
       racialAdjPatience = patience + 3
       racialAdjCharisma = charisma
       racialAdjPerception = perception
       racialAdjStrength = strength - 1
       racialAdjAgility = agility - 1
-      racialAdjConsitution = constitution - 2
+      racialAdjConstitution = constitution - 2
       racialAdjEndurance = endurance
       racialAdjMagicSave = magic_save
       racialAdjMindSave = mind_save + 5
@@ -220,74 +216,96 @@ ready = ->
     else
       weight = Math.floor((Math.random()*120)+120)
       $('#character_weight').val(weight)
+      $('#character_languages').val("Common")
       racialAdjInteligence = intelligence
       racialAdjPatience = patience
       racialAdjCharisma = charisma
       racialAdjPerception = perception
       racialAdjStrength = strength
       racialAdjAgility = agility
-      racialAdjConsitution = constitution
-      racialAdjEndurance = endurance
+      racialAdjConstitution = constitution
+      racialAdjEndurance = endurance + 2
       racialAdjMagicSave = magic_save
       racialAdjMindSave = mind_save
       racialAdjForceSave = force_save
       racialAdjWeatherSave = weather_save
       racialAdjPoisonSave = poison_save
-    # Adjust stats based on class
-    if characterClass == "Fighter"
+
+    # set class/proffesion and djust stats based on class
+    classes = ["Fighter","Mage","Thief","Psion","Assassin","Hunter","Druid",
+                "Mage/Fighter","Mage/Thief","Thief/Fighter","Assassin/Mage",
+                "Assassin/Psion","Hunter/Psion"]
+    classShuffle = classes.shuffle()
+    characterClass = classShuffle[0]
+    console.log("character class: " + characterClass)
+    $('#character_career').val(characterClass)
+    if characterClass is "Fighter"
       classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience - 1
       classAdjCharisma = racialAdjCharisma - 1
       classAdjPerception = racialAdjPerception - 1
-      classAdjStrength = racialAdjStrength + 1
+      classAdjStrength = racialAdjStrength + 2
       classAdjAgility = racialAdjAgility + 1
-      classAdjConsitution = racialAdjConsitution + 1
-      classAdjEndurance = racialAdjEndurance + 1
+      classAdjConstitution = racialAdjConstitution + 2
+      classAdjEndurance = racialAdjEndurance + 2
       classAdjMagicSave = racialAdjMagicSave - 1
       classAdjMindSave = racialAdjMindSave - 2
       classAdjForceSave = racialAdjForceSave + 1
       classAdjWeatherSave = racialAdjWeatherSave + 1
       classAdjPoisonSave = racialAdjPoisonSave + 1
-      arrSkills.push ["Armor Repair","Jumping","Rolling","Horse Riding","Swimming"]
-    else if characterClass = "Mage"
-      classAdjIntelligence = racialAdjInteligence + 2
-      classAdjPatience = racialAdjPatience + 1
-      classAdjCharisma = racialAdjCharisma
-      classAdjPerception = racialAdjPerception + 1
-      classAdjStrength = racialAdjStrength - 1
-      classAdjAgility = racialAdjAgility - 1
-      classAdjConsitution = racialAdjConsitution - 1
-      classAdjEndurance = racialAdjEndurance - 1
-      classAdjMagicSave = racialAdjMagicSave + 2
-      classAdjMindSave = racialAdjMindSave + 2
-      classAdjForceSave = racialAdjForceSave - 1
-      classAdjWeatherSave = racialAdjWeatherSave - 2
-      classAdjPoisonSave = racialAdjPoisonSave - 2
-      arrSkills.push ["Reading/Writing","Strategy Games","Book Binding"]
-    else if characterClass = "Theif"
+    else if characterClass is "Thief" or
+            characterClass is "Thief/Fighter"
       classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience
       classAdjCharisma = racialAdjCharisma + 1
       classAdjPerception = racialAdjPerception
       classAdjStrength = racialAdjStrength - 1
       classAdjAgility = racialAdjAgility + 2
-      classAdjConsitution = racialAdjConsitution - 1
+      classAdjConstitution = racialAdjConstitution - 1
       classAdjEndurance = racialAdjEndurance
-      classAdjMagicSave = racialAdjMagicSave -1
+      classAdjMagicSave = racialAdjMagicSave - 1
       classAdjMindSave = racialAdjMindSave + 1
       classAdjForceSave = racialAdjForceSave
       classAdjWeatherSave = racialAdjWeatherSave - 1
       classAdjPoisonSave = racialAdjPoisonSave + 4
-      arrSkills.push ["Acrobatics","Moving Silently","Hide in Shadows",
-                      "Lock Picking","Pick Pockets"]
-    else if characterClass = "Psion"
+    else if characterClass is "Mage"  or
+            characterClass is "Mage/Thief" or
+            characterClass is "Mage/Fighter"
+      classAdjIntelligence = racialAdjInteligence + 2
+      classAdjPatience = racialAdjPatience + 1
+      classAdjCharisma = racialAdjCharisma
+      classAdjPerception = racialAdjPerception + 1
+      classAdjStrength = racialAdjStrength - 1
+      classAdjAgility = racialAdjAgility - 1
+      classAdjConstitution = racialAdjConstitution - 1
+      classAdjEndurance = racialAdjEndurance - 1
+      classAdjMagicSave = racialAdjMagicSave + 2
+      classAdjMindSave = racialAdjMindSave + 2
+      classAdjForceSave = racialAdjForceSave - 1
+      classAdjWeatherSave = racialAdjWeatherSave - 2
+      classAdjPoisonSave = racialAdjPoisonSave - 2
+      console.log(level)
+      if level > 25
+        $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Wish, Summon Demon/Angel, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+      else if level > 20
+        $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+      else if level > 15
+        $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Invisibility, Force of Will, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+      else if level > 10
+        $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+      else if level > 5
+        $("#character_spells").val("Fireball, Charm, Ice Wall, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+      else
+        $("#character_spells").val("Charm, Minor Bolt, Levitate, Weather Resist, Armor, Open Lock, Slick Ground")
+    else if characterClass is "Psion" or
+            characterClass is "Hunter/Psion"
       classAdjIntelligence = racialAdjInteligence
       classAdjPatience = racialAdjPatience + 2
       classAdjCharisma = racialAdjCharisma
       classAdjPerception = racialAdjPerception + 2
       classAdjStrength = racialAdjStrength - 1
       classAdjAgility = racialAdjAgility - 1
-      classAdjConsitution = racialAdjConsitution - 1
+      classAdjConstitution = racialAdjConstitution - 1
       classAdjEndurance = racialAdjEndurance - 1
       classAdjMagicSave = racialAdjMagicSave
       classAdjMindSave = racialAdjMindSave + 5
@@ -295,14 +313,16 @@ ready = ->
       classAdjWeatherSave = racialAdjWeatherSave - 2
       classAdjPoisonSave = racialAdjPoisonSave - 3
       arrSkills.push ["Reading/Writing"]
-    else if characterClass = "Assassin"
+    else if characterClass is "Assassin" or
+            characterClass is "Assassin/Mage" or
+            characterClass is "Assassin/Psion"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience + 1
       classAdjCharisma = racialAdjCharisma - 4
       classAdjPerception = racialAdjPerception - 1
       classAdjStrength = racialAdjStrength + 2
       classAdjAgility = racialAdjAgility
-      classAdjConsitution = racialAdjConsitution - 1
+      classAdjConstitution = racialAdjConstitution - 1
       classAdjEndurance = racialAdjEndurance - 1
       classAdjMagicSave = racialAdjMagicSave + 2
       classAdjMindSave = racialAdjMindSave + 2
@@ -311,14 +331,14 @@ ready = ->
       classAdjPoisonSave = racialAdjPoisonSave + 2
       arrSkills.push ["Poisons","Death Strike","Moving Silently","Hide in Shadows",
                       "Lock Picking"]
-    else if characterClass = "Hunter"
+    else if characterClass is "Hunter"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience - 1
       classAdjCharisma = racialAdjCharisma - 4
       classAdjPerception = racialAdjPerception + 2
       classAdjStrength = racialAdjStrength - 1
       classAdjAgility = racialAdjAgility - 1
-      classAdjConsitution = racialAdjConsitution + 1
+      classAdjConstitution = racialAdjConstitution + 1
       classAdjEndurance = racialAdjEndurance + 1
       classAdjMagicSave = racialAdjMagicSave
       classAdjMindSave = racialAdjMindSave + 1
@@ -326,14 +346,14 @@ ready = ->
       classAdjWeatherSave = racialAdjWeatherSave + 7
       classAdjPoisonSave = racialAdjPoisonSave
       arrSkills.push ["Tracking","Moving Silently","Hide in Shadows"]
-    else if characterClass = "Druid"
+    else if characterClass is "Druid"
       classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience + 3
       classAdjCharisma = racialAdjCharisma - 2
       classAdjPerception = racialAdjPerception - 1
       classAdjStrength = racialAdjStrength - 1
       classAdjAgility = racialAdjAgility - 1
-      classAdjConsitution = racialAdjConsitution + 3
+      classAdjConstitution = racialAdjConstitution + 3
       classAdjEndurance = racialAdjEndurance - 1
       classAdjMagicSave = racialAdjMagicSave
       classAdjMindSave = racialAdjMindSave
@@ -348,29 +368,31 @@ ready = ->
       classAdjPerception = racialAdjPerception
       classAdjStrength = racialAdjStrength
       classAdjAgility = racialAdjAgility
-      classAdjConsitution = racialAdjConsitution
+      classAdjConstitution = racialAdjConstitution
       classAdjEndurance = racialAdjEndurance
       classAdjMagicSave = racialAdjMagicSave
       classAdjMindSave = racialAdjMindSave
       classAdjForceSave = racialAdjForceSave
       classAdjWeatherSave = racialAdjWeatherSave
       classAdjPoisonSave = racialAdjPoisonSave
+
     levelStatAdjustor = Math.round(level / 8)
     $('#character_intelligence').val(classAdjIntelligence + levelStatAdjustor)
     $('#character_patience').val(classAdjPatience + levelStatAdjustor)
-    $('#character_charisma').val(racialAdjCharisma + levelStatAdjustor)
-    $('#character_perception').val(racialAdjPerception + levelStatAdjustor)
-    $('#character_strength').val(racialAdjStrength + levelStatAdjustor)
-    $('#character_agility').val(racialAdjAgility + levelStatAdjustor)
-    $('#character_constitution').val(racialAdjConsitution + levelStatAdjustor)
-    $('#character_endurance').val(racialAdjEndurance + levelStatAdjustor)
+    $('#character_charisma').val(classAdjCharisma + levelStatAdjustor)
+    $('#character_perception').val(classAdjPerception + levelStatAdjustor)
+    $('#character_strength').val(classAdjStrength + levelStatAdjustor)
+    $('#character_agility').val(classAdjAgility + levelStatAdjustor)
+    $('#character_constitution').val(classAdjConstitution + levelStatAdjustor)
+    $('#character_endurance').val(classAdjEndurance + levelStatAdjustor)
     $('#character_magic_save').val(classAdjMagicSave)
     $('#character_mind_save').val(classAdjMindSave)
     $('#character_force_save').val(classAdjForceSave)
     $('#character_weather_save').val(classAdjWeatherSave)
     $('#character_poison_save').val(classAdjPoisonSave)
 
-    $('#character_skills').val(arrSkills)
+    cleanArrSkills = arrSkills.join(',').replace(/,/g, ', ')
+    $('#character_skills').val(cleanArrSkills)
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
