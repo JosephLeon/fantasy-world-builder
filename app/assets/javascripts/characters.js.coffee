@@ -27,11 +27,11 @@ ready = ->
     doubleConsonant = ["ch","dr","fh","gh","ht","jr","kw","lr","mh","ns",
                         "ph","qu", "rh","sm","th","vh","wr","xz","zh"]
     doubleVowel = ["ae","ea","ie","oa","uo","ya","ye","yi","yu","yo"]
-    consonantComesFirst = Math.floor((Math.random()*10)+1)
-    chooseSingle = chooseSecond = Math.floor((Math.random()*10)+1)
-    #chooseSecond = Math.floor((Math.random()*10)+1)
-    substringRandLimiter1 = substringRandLimiter2 = Math.floor((Math.random()*5)+3)
-    #substringRandLimiter2 = Math.floor((Math.random()*5)+3)
+    consonantComesFirst = Math.floor((Math.random()*9))
+    chooseSingle = Math.floor((Math.random()*9))
+    chooseSecond = Math.floor((Math.random()*9))
+    substringRandLimiter1 = Math.floor((Math.random()*5)+3)
+    substringRandLimiter2 = Math.floor((Math.random()*5)+3)
     randomNameGenerator = ->
       if isOdd(consonantComesFirst)
         if isOdd(chooseSingle) # first letter consonant
@@ -125,10 +125,16 @@ ready = ->
     randomNameGenerator()
     firstName = randomNameGenerator()
     lastName = randomNameGenerator()
-    $('#character_name').val(firstName.substring(0,substringRandLimiter1) +
-      " " + lastName.substring(0,substringRandLimiter2))
+    $('#character_name').val(firstName.substring(0,substringRandLimiter1) + " " + lastName.substring(0,substringRandLimiter2))
     # set level, calculate health, gold, vars for saves, skills
     level = Math.floor((Math.random()*25)+1)
+    if level is 25
+      if Math.floor((Math.random()*20)+1) > 18
+        level = level +  Math.floor((Math.random()*10)+1)
+      else if Math.floor((Math.random()*20)+1) > 17
+        level = level + Math.floor((Math.random()*5)+1)
+      else
+        level = level
     $('#character_level').val(level)
     $('#character_health').val(level * 10)
     $('#character_attack').val(level + 2)
