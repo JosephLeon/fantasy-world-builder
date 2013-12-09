@@ -129,9 +129,10 @@ ready = ->
     # set level, calculate health, gold, vars for saves, skills
     level = Math.floor((Math.random()*25)+1)
     if level is 25
-      if Math.floor((Math.random()*20)+1) > 18
-        level = level +  Math.floor((Math.random()*10)+1)
-      else if Math.floor((Math.random()*20)+1) > 17
+      ultraLevel = Math.floor((Math.random()*20)+1)
+      if ultraLevel > 18
+        level = level + Math.floor((Math.random()*10)+1)
+      else if ultraLevel > 17
         level = level + Math.floor((Math.random()*5)+1)
       else
         level = level
