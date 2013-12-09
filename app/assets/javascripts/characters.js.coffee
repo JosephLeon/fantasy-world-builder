@@ -338,32 +338,32 @@ ready = ->
       classAdjPoisonSave = racialAdjPoisonSave - 3
       if characterClass is "Psion"
         if level > 25
-          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Wish, Summon Demon/Angel, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 10,000kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self), Detect Life, Astral Travel, Banish, See Future, Disintegrate, Teleport")
         else if level > 20
-          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 2,000kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self), Detect Life, Astral Travel, Banish")
         else if level > 15
-          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Invisibility, Force of Will, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 500kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self)")
         else if level > 10
-          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 100kg, Telepathy (Neutral), Defense Body Composition, Jump")
         else if level > 5
-          $("#character_spells").val("Fireball, Charm, Ice Wall, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 25kg, Telepathy (Allies)")
         else
-          $("#character_spells").val("Charm, Minor Bolt, Levitate, Weather Resist, Armor, Open Lock, Slick Ground")
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 5kg")
         arrSkills.push ["Reading & Writing, Ancient Languages, Power Areas"]
       else
-        if level/2 > 25
-          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Wish, Summon Demon/Angel, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
-        else if level/2 > 20
-          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
-        else if level/2 > 15
-          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Invisibility, Force of Will, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
-        else if level/2 > 10
-          $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Raise Dead, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
-        else if level/2 > 5
-          $("#character_spells").val("Fireball, Charm, Ice Wall, Minor Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
+        if level > 25
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 10,000kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self), Detect Life, Astral Travel, Banish, See Future, Disintegrate, Teleport")
+        else if level > 20
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 2,000kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self), Detect Life, Astral Travel, Banish")
+        else if level > 15
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 500kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self)")
+        else if level > 10
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 100kg, Telepathy (Neutral), Defense Body Composition, Jump")
+        else if level > 5
+          $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 25kg, Telepathy (Allies)")
         else
-          $("#character_spells").val("Charm, Minor Bolt, Levitate, Weather Resist, Armor, Open Lock, Slick Ground")
-        arrSkills.push ["Read Magic, Reading & Writing, Moving Silently","Hide in Shadows", "Lock Picking"]
+          $("#character_spells").val("Read Emotion, Detect Lie, Telekinisis 5kg")
+        arrSkills.push ["Reading & Writing, Moving Silently","Hide in Shadows"]
     else if characterClass is "Assassin"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience + 1
