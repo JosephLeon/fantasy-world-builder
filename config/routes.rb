@@ -1,5 +1,9 @@
 WorldBuilder::Application.routes.draw do
 
+  get "areas/index"
+  get "areas/show"
+  get "areas/new"
+  get "areas/edit"
   resources :characters, :universes, :items
   root 'static_pages#home'
   match '/',                to: 'static_pages#home',    via: 'get'
