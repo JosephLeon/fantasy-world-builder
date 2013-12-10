@@ -1,5 +1,6 @@
 class Universe < ActiveRecord::Base
   has_many :characters, dependent: :destroy
+  has_many :areas, dependent: :destroy
 
   validates_presence_of :name, :description
   validates_length_of :name,  :maximum => 128,

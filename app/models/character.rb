@@ -1,6 +1,7 @@
 class Character < ActiveRecord::Base
 
   belongs_to :universe
+  belongs_to :area
   has_many :items
   default_scope -> { order('name ASC') }
 
