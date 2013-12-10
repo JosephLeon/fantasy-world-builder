@@ -1,6 +1,8 @@
 <% @title = @item.name %>
 <p><strong>Appearance:</strong> <%= @item.appearance %></p>
-<p><strong>Owner:</strong> <%= link_to @character.name, character_path(@character) %></p>
+<% if @character %>
+  <p><strong>Owner:</strong> <%= link_to @character.name, character_path(@character) %></p>
+<% end %>
 
 <div class="clear">
   <div class="leftcol">
