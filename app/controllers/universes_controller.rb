@@ -7,6 +7,7 @@ class UniversesController < ApplicationController
   def show
     @universe = Universe.find(params[:id])
     @characters = @universe.characters
+    @areas = @universe.areas
   end
 
   def new
