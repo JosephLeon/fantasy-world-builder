@@ -7,4 +7,19 @@
 <p><strong>Universe:</strong> <%= link_to @universe.name, universe_path(@universe) %></p>
 <% end %>
 
-
+<h3>Characters</h3>
+<% if @area.characters.any? %>
+  <p>There are <%= @area.characters.count %> characters in this area.</p>
+  <table class="table">
+    <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    <%= render @characters %>
+  </table>
+<% else %>
+  <p>There are no characters in this area, or they all died...</p>
+<% end %>
