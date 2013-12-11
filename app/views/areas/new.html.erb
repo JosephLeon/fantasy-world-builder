@@ -3,12 +3,14 @@
   <%#= render 'shared/character_error_messages' %>
 
   <div class="form-row">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
     <%= f.label :environment %>
-    <%= f.text_field :environment %>
+    <%= f.text_area :environment %>
     <%= f.label :notes %>
-    <%= f.text_field :notes %>
+    <%= f.text_area :notes %>
     <%= f.label :map %>
     <%= f.text_field :map %>
 

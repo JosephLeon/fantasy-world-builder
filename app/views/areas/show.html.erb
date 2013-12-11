@@ -1,8 +1,10 @@
 <% @title = @area.name %>
-<p><strong>Description:</strong> <%= @character.level %></p>
-<p><strong>Environment:</strong> <%= @character.race %></p>
-<p><strong>Notes:</strong> <%= @character.level %></p>
-<p><strong>Map:</strong> <%= @character.race %></p>
+<p><strong>Description:</strong> <%= @area.description %></p>
+<p><strong>Environment:</strong> <%= @area.environment %></p>
+<p><strong>Notes:</strong> <%= @area.notes %></p>
+<p><strong>Map:</strong> <%= @area.map %></p>
 <% if @universe %>
 <p><strong>Universe:</strong> <%= link_to @universe.name, universe_path(@universe) %></p>
 <% end %>
+
+
