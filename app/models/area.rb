@@ -6,6 +6,11 @@ class Area < ActiveRecord::Base
     "#{name}"
   end
 
+  def area_types
+    #types_array = ['Planet','Continent','Kingdom','City/Village']
+    "test"
+  end
+
   validates_presence_of :name, :description
   validates_length_of :name,  :maximum => 128,
                               :too_long => "Can't be more than 128 characters."

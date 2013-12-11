@@ -5,6 +5,24 @@
   <div class="form-row">
     <%= f.label :name %>
     <%= f.text_field :name %>
+
+    <%#= options_for_select([ ['Lisbon', 1], ['Madrid', 2], ]) %>
+    <%= select_tag(
+      :type,
+      options_for_select([
+        ['Planet', 1],
+        ['Continent', 2],
+        ['Kingdom'],
+        ['City/Village'],
+      ])) %>
+
+    <% types_array = ['Planet','Continent','Kingdom','City/Village'] %>
+    <%= options_for_select(types_array) %>
+    <%= select_tag(
+      :type,
+      options_for_select(types_array),
+      prompt: :select)%>
+
     <%= f.label :description %>
     <%= f.text_area :description %>
     <%= f.label :environment %>
@@ -22,6 +40,7 @@
       :id,
       :universe_name_for_lists,
       prompt: true) %>
+
   </div>
 
   <%= f.submit "Create Area", id: "submit" %>
