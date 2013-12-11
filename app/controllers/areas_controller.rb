@@ -5,6 +5,8 @@ class AreasController < ApplicationController
 
   def show
     @area = Area.find(params[:id])
+    @universe = @area.universe
+    @characters = @area.characters
   end
 
   def new
