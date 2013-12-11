@@ -6,7 +6,7 @@ class Universe < ActiveRecord::Base
   validates_length_of :name,  :maximum => 128,
                               :too_long => "Can't be more than 128 characters."
 
-  def universe_name_for_character
+  def universe_name_for_lists
     "#{name}"
   end
 end

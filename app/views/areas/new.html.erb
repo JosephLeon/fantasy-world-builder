@@ -1,3 +1,28 @@
-<% @title = "Character Area" %>
-<h1>Areas#new</h1>
-<p>Find me in app/views/areas/new.html.erb</p>
+<% @title = "Create Area" %>
+<%= form_for(@area) do |f| %>
+  <%#= render 'shared/character_error_messages' %>
+
+  <div class="form-row">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.label :environment %>
+    <%= f.text_field :environment %>
+    <%= f.label :notes %>
+    <%= f.text_field :notes %>
+    <%= f.label :map %>
+    <%= f.text_field :map %>
+
+    <%= f.label :universe_id %>
+    <%= collection_select(
+      :area,
+      :universe_id,
+      Universe.all,
+      :id,
+      :universe_name_for_lists,
+      prompt: true) %>
+  </div>
+
+  <%= f.submit "Create Area", id: "submit" %>
+
+<% end %>
+
