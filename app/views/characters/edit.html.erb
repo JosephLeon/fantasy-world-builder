@@ -19,6 +19,15 @@
       :universe_name_for_lists,
       prompt: true) %>
 
+    <%= f.label :area_id %>
+    <%= collection_select(
+      :character,
+      :area_id,
+      Area.all,
+      :id,
+      :area_name_for_lists,
+      prompt: true) %>
+
     <%= f.label :career, 'Class' %>
     <%= f.text_field :career %>
   </div>

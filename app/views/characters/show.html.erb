@@ -3,6 +3,9 @@
 <p><strong>Level:</strong> <%= @character.level %></p>
 <p><strong>Race:</strong> <%= @character.race %></p>
 <p><strong>Universe:</strong> <%= link_to @universe.name, universe_path(@universe) %></p>
+<% if @area %>
+<p><strong>Area:</strong> <%= link_to @area.name, area_path(@area) %></p>
+<% end %>
 <div class="clear">
   <div class="leftcol">
     <p><strong>Health:</strong> <%= @character.health %></p>

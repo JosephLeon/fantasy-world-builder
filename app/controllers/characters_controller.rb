@@ -7,6 +7,7 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
     @universe  = @character.universe
     @items = @character.items
+    @area = @character.area
   end
 
   def new
@@ -74,6 +75,7 @@ class CharactersController < ApplicationController
         :poison_save,
         :force_save,
         :notes,
-        :universe_id)
+        :universe_id,
+        :area_id)
     end
 end
