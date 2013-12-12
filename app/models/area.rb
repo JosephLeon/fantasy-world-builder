@@ -15,14 +15,7 @@ class Area < ActiveRecord::Base
         ['City'],
         ['Place'],
         ['Dungeon']
-        # ['Planet',1],
-        # ['Continent',2],
-        # ['Kingdom',3],
-        # ['City',4],
-        # ['Place',5],
-        # ['Dungeon', 6]
       ]
-      #types_array = ['Planet','Continent','Kingdom','City/Village','Place','Dungeon']
     end
   end
 

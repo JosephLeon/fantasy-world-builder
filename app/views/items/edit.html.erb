@@ -13,18 +13,12 @@
     <div class="leftcol">
       <%= f.label :damage %>
       <%= f.text_field :damage %>
-    </div>
-    <div class="rightcol">
-      <%= f.label :durability %>
-      <%= f.text_field :durability %>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="leftcol">
       <%= f.label :weight %>
       <%= f.text_field :weight %>
     </div>
     <div class="rightcol">
+      <%= f.label :durability %>
+      <%= f.text_field :durability %>
       <%= f.label :size %>
       <%= f.text_field :size %>
     </div>
@@ -35,5 +29,5 @@
     <%= f.label :notes %>
     <%= f.text_area :notes %>
   </div>
-  <%= f.submit "Edit Item.", id: "submit" %>
+  <%= f.submit "Save Edits", id: "submit" %>
 <% end %>

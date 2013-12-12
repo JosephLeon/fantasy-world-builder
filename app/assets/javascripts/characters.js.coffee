@@ -28,9 +28,12 @@ ready = ->
     chooseSecond = Math.floor((Math.random()*9))
     substringRandLimiter1 = Math.floor((Math.random()*5)+3)
     substringRandLimiter2 = Math.floor((Math.random()*5)+3)
+    # clear some values in case they were present before new click
+    $("#character_spells").val("")
+    $("#character_powers").val("")
     randomNameGenerator = ->
-      if isOdd(consonantComesFirst)
-        if isOdd(chooseSingle) # first letter consonant
+      if isOdd(consonantComesFirst) # first letter consonant
+        if isOdd(chooseSingle)
           first = consonant.shuffle() # first letter single consonant
           firstOne = first[0]
           if isOdd(chooseSecond)
@@ -72,8 +75,8 @@ ready = ->
             fourthOne = fourth[0]
             fifth = doubleConsonant.shuffle()
             fifthOne = fifth[0]
-      else
-        if isOdd(chooseSingle) # first letter vowel
+      else # first letter vowel
+        if isOdd(chooseSingle)
           first = vowel.shuffle() # first letter single vowel
           firstOne = first[0]
           if isOdd(chooseSecond)
@@ -118,7 +121,6 @@ ready = ->
       fullName = firstOne.capitalize() + secondOne + thirdOne + fourthOne + fifthOne
 
     #set name
-    randomNameGenerator()
     firstName = randomNameGenerator()
     lastName = randomNameGenerator()
     $('#character_name').val(firstName.substring(0,substringRandLimiter1) + " " + lastName.substring(0,substringRandLimiter2))
@@ -133,7 +135,6 @@ ready = ->
       else
         level = level
     $('#character_level').val(level)
-    $('#character_health').val(level * 10)
     $('#character_attack').val(level + 2)
     $('#character_defense').val(level)
     $('#character_armor').val(level - 1)
@@ -252,6 +253,7 @@ ready = ->
       classAdjForceSave = racialAdjForceSave + 1
       classAdjWeatherSave = racialAdjWeatherSave + 1
       classAdjPoisonSave = racialAdjPoisonSave + 1
+      $('#character_health').val(level * 12)
     else if characterClass is "Thief" or
             characterClass is "Thief/Fighter"
       classAdjIntelligence = racialAdjInteligence - 1
@@ -267,6 +269,7 @@ ready = ->
       classAdjForceSave = racialAdjForceSave
       classAdjWeatherSave = racialAdjWeatherSave - 1
       classAdjPoisonSave = racialAdjPoisonSave + 4
+      $('#character_health').val(level * 7)
     else if characterClass is "Mage"  or
             characterClass is "Mage/Thief" or
             characterClass is "Assassin/Mage" or
@@ -298,6 +301,7 @@ ready = ->
         else
           $("#character_spells").val("Charm, Minor Bolt, Levitate, Weather Resist, Armor, Open Lock, Slick Ground")
         arrSkills.push ["Read Magic, Reading & Writing, Ancient Languages, Protection Circles"]
+        $('#character_health').val(level * 4)
       else # set skills and spells for other hybrid mage classes
         if level/2 > 25
           $("#character_spells").val("Fireball, Charm, Ice Wall, Fly, Weather, Invisibility, Force of Will, Wish, Summon Demon/Angel, Raise Dead, Minor Bolt, Rapid Bolt, Levitate, Water Breathing, Weather Resist, Armor, Open Lock, Slick Ground, Animate Weapon")
@@ -317,6 +321,7 @@ ready = ->
           arrSkills.push ["Read Magic, Reading & Writing, Moving Silently","Hide in Shadows", "Lock Picking"]
         else
           arrSkills.push ["Read Magic, Reading & Writing, Combat Casting"]
+        $('#character_health').val(level * 5)
     else if characterClass is "Psion" or
             characterClass is "Hunter/Psion" or
             characterClass is "Assassin/Psion"
@@ -347,6 +352,7 @@ ready = ->
         else
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 5kg")
         arrSkills.push ["Reading & Writing, Ancient Languages, Power Areas"]
+        $('#character_health').val(level * 8)
       else # set powers and skills for psion hybrids
         if level/2 > 25
           $("#character_powers").val("Read Emotion, Detect Lie, Telekinisis 10,000kg, Telepathy (Enemies), Defense Body Composition, Jump, Mind Control, Levitate (Self), Detect Life, Astral Travel, Banish, See Future, Disintegrate, Teleport")
@@ -361,6 +367,7 @@ ready = ->
         else
           $("#character_spells").val("Read Emotion, Detect Lie, Telekinisis 5kg")
         arrSkills.push ["Reading & Writing, Moving Silently","Hide in Shadows"]
+        $('#character_health').val(level * 6)
     else if characterClass is "Assassin"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience + 1
@@ -375,8 +382,8 @@ ready = ->
       classAdjForceSave = racialAdjForceSave + 2
       classAdjWeatherSave = racialAdjWeatherSave + 2
       classAdjPoisonSave = racialAdjPoisonSave + 2
-      arrSkills.push ["Poisons","Death Strike","Moving Silently","Hide in Shadows",
-                      "Lock Picking"]
+      arrSkills.push ["Poisons","Death Strike","Moving Silently","Hide in Shadows","Lock Picking"]
+      $('#character_health').val(level * 7)
     else if characterClass is "Hunter"
       classAdjIntelligence = racialAdjInteligence + 2
       classAdjPatience = racialAdjPatience - 1
@@ -404,6 +411,7 @@ ready = ->
       else
         $("#character_spells").val("Charm Animal, Minor Bolt, Levitate, Weather Resist, Armor, Slick Ground")
       arrSkills.push ["Tracking","Moving Silently","Hide in Shadows"]
+      $('#character_health').val(level * 7)
     else if characterClass is "Druid"
       classAdjIntelligence = racialAdjInteligence - 1
       classAdjPatience = racialAdjPatience + 3
@@ -431,6 +439,7 @@ ready = ->
       else
         $("#character_spells").val("Charm Animal, Minor Bolt, Levitate, Weather Resist, Armor, Slick Ground")
       arrSkills.push ["Animal Aspect","Animal Senses"]
+      $('#character_health').val(level * 6)
     else
       classAdjIntelligence = racialAdjInteligence
       classAdjPatience = racialAdjPatience
@@ -445,6 +454,7 @@ ready = ->
       classAdjForceSave = racialAdjForceSave
       classAdjWeatherSave = racialAdjWeatherSave
       classAdjPoisonSave = racialAdjPoisonSave
+      $('#character_health').val(level * 6)
 
     levelStatAdjustor = Math.round(level / 8)
     $('#character_intelligence').val(classAdjIntelligence + levelStatAdjustor)

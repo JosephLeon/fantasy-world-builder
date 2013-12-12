@@ -4,14 +4,14 @@
 <p><strong>Environment:</strong> <%= @area.environment %></p>
 <p><strong>Notes:</strong> <%= @area.notes %></p>
 <p><strong>Map:</strong> <%= @area.map %></p>
-<p><strong>Area Type:</strong> <%#= @area.area_type %></p>
+<p><strong>Area Type:</strong> <%= @area.area_type %></p>
 <% if @universe %>
 <p><strong>Universe:</strong> <%= link_to @universe.name, universe_path(@universe) %></p>
 <% end %>
 
 <h3>Characters</h3>
 <% if @area.characters.any? %>
-  <p>There are <%= @area.characters.count %> characters in this area.</p>
+  <p>There are <%= pluralize(@area.characters.count, "character") %> in this area.</p>
   <table class="table">
     <tr>
         <th>Name</th>

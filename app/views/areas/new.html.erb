@@ -7,11 +7,10 @@
     <%= f.text_field :name %>
 
     <%= f.label :area_type %>
-    <%= select_tag(
+    <%= f.select(
       :area_type,
       options_for_select(Area.area_types),
       prompt: :select)%>
-    <%= f.text_field :area_type %>
 
     <%= f.label :universe_id %>
     <%= collection_select(
