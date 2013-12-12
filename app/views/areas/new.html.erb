@@ -6,31 +6,12 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
 
-    <%#= options_for_select([ ['Lisbon', 1], ['Madrid', 2], ]) %>
+    <%= f.label :area_type %>
     <%= select_tag(
-      :type,
-      options_for_select([
-        ['Planet', 1],
-        ['Continent', 2],
-        ['Kingdom'],
-        ['City/Village'],
-      ])) %>
-
-    <% types_array = ['Planet','Continent','Kingdom','City/Village'] %>
-    <%= options_for_select(types_array) %>
-    <%= select_tag(
-      :type,
-      options_for_select(types_array),
+      :area_type,
+      options_for_select(Area.area_types),
       prompt: :select)%>
-
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <%= f.label :environment %>
-    <%= f.text_area :environment %>
-    <%= f.label :notes %>
-    <%= f.text_area :notes %>
-    <%= f.label :map %>
-    <%= f.text_field :map %>
+    <%= f.text_field :area_type %>
 
     <%= f.label :universe_id %>
     <%= collection_select(
@@ -40,6 +21,15 @@
       :id,
       :universe_name_for_lists,
       prompt: true) %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <%= f.label :environment %>
+    <%= f.text_area :environment %>
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+    <%= f.label :map %>
+    <%= f.text_field :map %>
 
   </div>
 

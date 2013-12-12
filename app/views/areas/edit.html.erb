@@ -5,14 +5,21 @@
   <div class="form-row">
     <%= f.label :name %>
     <%= f.text_field :name %>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-    <%= f.label :environment %>
-    <%= f.text_field :environment %>
-    <%= f.label :notes %>
-    <%= f.text_field :notes %>
-    <%= f.label :map %>
-    <%= f.text_field :map %>
+
+    <%= f.label :area_type %>
+    <%= f.select(
+      :area_type,
+      options_for_select(Area.area_types),
+      prompt: :select)%>
+    <%#= collection_select(
+      :area_type,
+      [1,2,3,4,5,6],
+      :area_type,
+      :id,
+      Area.area_types,
+      prompt: true) %>
+    <!-- (:tag, [1,2], :to_i, :to_s, :prompt => 'Categories') -->
+    <%#= f.text_field :area_type %>
 
     <%= f.label :universe_id %>
     <%= collection_select(
@@ -22,8 +29,19 @@
       :id,
       :universe_name_for_lists,
       prompt: true) %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <%= f.label :environment %>
+    <%= f.text_area :environment %>
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+    <%= f.label :map %>
+    <%= f.text_field :map %>
+
+
   </div>
 
-  <%= f.submit "Create Area", id: "submit" %>
+  <%= f.submit "Save Area", id: "submit" %>
 
 <% end %>

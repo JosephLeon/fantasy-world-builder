@@ -1,5 +1,6 @@
 <tr>
   <td><%= link_to area.name, area %></td>
+  <td><%#= area.type %></td>
   <td><%= link_to "Edit", edit_area_path(area) %></td>
   <td><%= link_to "Remove", area, method: :delete, data: { confirm: "Are you sure?" } %></td>
 </tr>
