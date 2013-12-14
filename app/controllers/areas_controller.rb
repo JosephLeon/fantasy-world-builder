@@ -46,7 +46,8 @@ class AreasController < ApplicationController
         :notes,
         :universe_id,
         :environment,
-        :area_type
+        :area_type,
+        :type
         )
     end
 end

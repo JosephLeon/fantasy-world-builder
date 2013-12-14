@@ -1,4 +1,5 @@
 <% @title = "Edit Area" %>
+<p><%= @area.attributes.inspect %></p>
 <%= form_for(@area) do |f| %>
   <%#= render 'shared/character_error_messages' %>
 
@@ -9,8 +10,8 @@
     <%= f.label :area_type %>
     <%= f.select(
       :area_type,
-      options_for_select(Area.area_types),
-      prompt: :select)%>
+      options_for_select(Area.area_types, @area.area_type),
+      {prompt: :select, :selected => params[:area_type]})%>
 
     <%= f.label :universe_id %>
     <%= collection_select(
@@ -21,6 +22,15 @@
       :universe_name_for_lists,
       prompt: true) %>
 
+    <%= f.label :name, "Belongs to" %>
+    <%= collection_select(
+      :area,
+      :id,
+      Area.all,
+      :id,
+      :area_name_for_lists,
+      prompt: true) %>
+
     <%= f.label :description %>
     <%= f.text_area :description %>
     <%= f.label :environment %>
@@ -29,7 +39,6 @@
     <%= f.text_area :notes %>
     <%= f.label :map %>
     <%= f.text_field :map %>
-
 
   </div>
 
