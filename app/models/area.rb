@@ -2,8 +2,10 @@ class Area < ActiveRecord::Base
   belongs_to :universe
   has_many :characters
 
-  has_many :areas
-  belongs_to :area
+  # has_many :areas
+  # belongs_to :area
+
+
 
   def area_name_for_lists
     "#{name}"
@@ -27,7 +29,12 @@ class Area < ActiveRecord::Base
                               :too_long => "Can't be more than 128 characters."
 end
 
+class Planet < Area
+  has_many :continents
+end
+
 class Continent < Area
+  belongs_to :planet
   has_many :kingdoms
 end
 

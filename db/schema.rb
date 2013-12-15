@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214171132) do
+ActiveRecord::Schema.define(version: 20131215014357) do
 
   create_table "areas", force: true do |t|
     t.string   "name"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 20131214171132) do
     t.datetime "updated_at"
     t.string   "area_type"
     t.string   "type"
+    t.string   "planet_id"
+    t.string   "continent_id"
+    t.string   "kingdom_id"
+    t.string   "city_id"
+    t.string   "place_id"
   end
 
   create_table "characters", force: true do |t|
