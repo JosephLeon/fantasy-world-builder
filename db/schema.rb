@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104202800) do
+ActiveRecord::Schema.define(version: 20140104233159) do
 
   create_table "areas", force: true do |t|
     t.string   "name"
@@ -63,6 +63,21 @@ ActiveRecord::Schema.define(version: 20140104202800) do
     t.text     "notes"
     t.integer  "universe_id"
     t.integer  "area_id"
+  end
+
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "map"
+    t.string   "notes"
+    t.integer  "population"
+    t.string   "economy"
+    t.string   "building_style"
+    t.integer  "year_founded"
+    t.string   "resources"
+    t.string   "government"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "items", force: true do |t|
