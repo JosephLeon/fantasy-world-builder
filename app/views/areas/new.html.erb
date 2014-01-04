@@ -1,13 +1,13 @@
 <% @title = "Create Area" %>
 <%= form_for(@area) do |f| %>
   <%#= render 'shared/character_error_messages' %>
-  <%= f.hidden_field :parent_id %>
+  <%#= f.hidden_field :parent_id %>
   <div class="form-row">
     <%= f.label :name %>
     <%= f.text_field :name %>
 
-    <%= f.label :area_type %>
-    <%= f.select(
+    <%#= f.label :area_type %>
+    <%#= f.select(
       :area_type,
       options_for_select(Area.area_types),
       prompt: :select)%>
