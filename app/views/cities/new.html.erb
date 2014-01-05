@@ -1,2 +1,31 @@
 <% @title = "Create City" %>
-<p>Find me in app/views/cities/new.html.erb</p>
+<%= form_for(@city) do |f| %>
+  <div class="form-row">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :universe_id %>
+    <%= collection_select(
+      :city,
+      :universe_id,
+      Universe.all,
+      :id,
+      :universe_name_for_lists,
+      prompt: true) %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <%= f.label :population %>
+    <%= f.text_field :population %>
+    <%= f.label :economy %>
+    <%= f.text_area :economy %>
+    <%= f.label :building_style %>
+    <%= f.text_area :building_style %>
+    <%= f.label :resources %>
+    <%= f.text_area :resources %>
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+
+  </div>
+  <%= f.submit "Create City", id: "submit" %>
+<% end %>

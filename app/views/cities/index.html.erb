@@ -1,2 +1,18 @@
 <% @title = "Cities" %>
-<p>Find me in app/views/cities/index.html.erb</p>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @city.each do |city| %>
+    <tr>
+      <td><%= link_to city.name, city %></td>
+      <td><%= link_to "Edit", edit_city_path(city) %></td>
+      <td><%= link_to "Remove", city, method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+  <% end %>
+</table>
+

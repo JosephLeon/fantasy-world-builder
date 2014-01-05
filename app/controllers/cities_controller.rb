@@ -47,7 +47,11 @@ class CitiesController < ApplicationController
         :population,
         :economy,
         :building_style,
-        :resources
+        :year_founded,
+        :resources,
+        :government,
+        :universe_id
         )
     end
 end
+

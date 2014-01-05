@@ -4,6 +4,23 @@
 <p><strong>Special Rules:</strong> <%= @universe.special_rules %></p>
 <p><strong>Pantheon:</strong> <%= @universe.pantheon %></p>
 
+<h3>Cities</h3>
+<% if @universe.cities.any? %>
+  <p>There are <%= pluralize(@universe.cities.count, "area") %> in this universe.</p>
+  <table class="table">
+    <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    <%= render @cities %>
+  </table>
+<% else %>
+  <p>There are no cities in this universe, catastrophe!</p>
+<% end %>
+
 <h3>Areas</h3>
 <% if @universe.areas.any? %>
   <p>There are <%= pluralize(@universe.areas.count, "area") %> in this universe.</p>
