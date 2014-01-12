@@ -24,6 +24,7 @@ class AreasController < ApplicationController
 
   def edit
     @area = Area.find(params[:id])
+    # @city = Area.find(:all,:select => )
   end
 
   def update
@@ -45,6 +46,8 @@ class AreasController < ApplicationController
         :map,
         :notes,
         :universe_id,
+        :city_id,
+        :area_id,
         :environment
         )
     end
