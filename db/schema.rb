@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108144330) do
+ActiveRecord::Schema.define(version: 20140112183527) do
 
   create_table "areas", force: true do |t|
     t.string   "name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20140108144330) do
     t.datetime "updated_at"
     t.integer  "city_id"
     t.integer  "area_id"
+    t.string   "type"
+    t.integer  "place_id"
   end
 
   create_table "bearings", force: true do |t|

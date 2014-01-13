@@ -48,7 +48,9 @@ class AreasController < ApplicationController
         :universe_id,
         :city_id,
         :area_id,
-        :environment
+        :environment,
+        :type,
+        :place_id
         )
     end
 end
