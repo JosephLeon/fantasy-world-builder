@@ -21,22 +21,26 @@
       :universe_name_for_lists,
       prompt: true) %>
 
-    <%= f.label :area_type %>
-    <%= f.select(
-      :type,
-      options_for_select(Area::TYPES, @area.type),
-      {prompt: :select, :selected => params[:type]})%>
+    <div id="area_type_block">
+      <%= f.label :area_type %>
+      <%= f.select(
+        :type,
+        options_for_select(Area::TYPES, @area.type),
+        {prompt: :select, :selected => params[:type]})%>
+    </div>
 
-    <% if @area.type != 'Kingdom' %>
-      <%= f.label :name, "Belongs to" %>
-      <%= collection_select(
-        :area,
-        :id,
-        Area.all,#Area.for(@area),
-        :id,
-        :area_name_for_lists,
-        prompt: true) %>
-    <% end %>
+    <div id="area_belongs_to_block">
+      <% if @area.type != 'Kingdom' %>
+        <%= f.label :name, "Belongs to" %>
+        <%= collection_select(
+          :area,
+          :id,
+          Area.all,#Area.for(@area),
+          :id,
+          :area_name_for_lists,
+          prompt: true) %>
+      <% end %>
+    </div>
 
     <%= f.label :description %>
     <%= f.text_area :description %>
