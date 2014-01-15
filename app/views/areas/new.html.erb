@@ -29,13 +29,25 @@
         {prompt: :select, :selected => params[:type]})%>
     </div>
 
-    <div id="area_belongs_to_block">
+    <div id="area_belongs_to_kingdom">
       <% if @area.type != 'Kingdom' %>
         <%= f.label :name, "Belongs to" %>
         <%= collection_select(
           :area,
           :id,
-          Area.all,#Area.for(@area),
+          Area.where(type: "Kingdom"),#Area.for(@area),
+          :id,
+          :area_name_for_lists,
+          prompt: true) %>
+      <% end %>
+    </div>
+    <div id="area_belongs_to_city">
+      <% if @area.type != 'Kingdom' %>
+        <%= f.label :name, "Belongs to" %>
+        <%= collection_select(
+          :area,
+          :id,
+          Area.where(type: "City"),#Area.for(@area),
           :id,
           :area_name_for_lists,
           prompt: true) %>
