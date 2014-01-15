@@ -27,6 +27,7 @@ class Area < ActiveRecord::Base
 
   class << self
 
+    # returns the associated cities/places/kingdoms
     def for(model)
       TYPES.each_with_index do |type, index|
         if model.type == type
@@ -34,6 +35,7 @@ class Area < ActiveRecord::Base
           return Area.send(TYPES[index-1].downcase.pluralize)
         end
       end
+      Area.all
     end
 
     def cities

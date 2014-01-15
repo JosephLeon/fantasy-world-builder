@@ -35,7 +35,7 @@
         <%= collection_select(
           :area,
           :id,
-          Area.where(type: "Kingdom"),#Area.for(@area),
+          Area.kingdoms,
           :id,
           :area_name_for_lists,
           prompt: true) %>
@@ -47,7 +47,7 @@
         <%= collection_select(
           :area,
           :id,
-          Area.where(type: "City"),#Area.for(@area),
+          Area.cities,#where(type: "City"),#Area.for(@area),
           :id,
           :area_name_for_lists,
           prompt: true) %>
