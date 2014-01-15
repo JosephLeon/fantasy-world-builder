@@ -27,9 +27,9 @@
       <%= collection_select(
         :area,
         :id,
-        Area.for(@area),
+        Area.all,#Area.for(@area),
         :id,
-        Area.area_name_for_lists,
+        :area_name_for_lists,
         prompt: true) %>
     <% end %>
 
