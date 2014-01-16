@@ -1,16 +1,9 @@
 <% @title = "Create Area" %>
 <%= form_for(@area) do |f| %>
-  <%#= render 'shared/character_error_messages' %>
-  <%#= f.hidden_field :parent_id %>
+  <%= render 'shared/_swiss_army_error_messages' %>
   <div class="form-row">
     <%= f.label :name %>
     <%= f.text_field :name %>
-
-    <%#= f.label :area_type %>
-    <%#= f.select(
-      :area_type,
-      options_for_select(Area.area_types),
-      prompt: :select)%>
 
     <%= f.label :universe_id %>
     <%= collection_select(
@@ -41,13 +34,14 @@
           prompt: true) %>
       <% end %>
     </div>
+
     <div id="area_belongs_to_city">
       <% if @area.type != 'Kingdom' %>
         <%= f.label :name, "Belongs to" %>
         <%= collection_select(
           :area,
           :id,
-          Area.cities,#where(type: "City"),#Area.for(@area),
+          Area.cities,#where(type: "City"),
           :id,
           :area_name_for_lists,
           prompt: true) %>
