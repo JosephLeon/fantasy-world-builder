@@ -26,7 +26,7 @@
       <%= f.label :name, "Belongs to" %>
       <%= collection_select(
         :area,
-        :id,
+        :area_id,
         Area.for(@area),
         :id,
         :area_name_for_lists,

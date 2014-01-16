@@ -27,7 +27,7 @@
         <%= f.label :name, "Belongs to" %>
         <%= collection_select(
           :area,
-          :id,
+          :area_id,
           Area.kingdoms,
           :id,
           :area_name_for_lists,
@@ -40,7 +40,7 @@
         <%= f.label :name, "Belongs to" %>
         <%= collection_select(
           :area,
-          :id,
+          :area_id,
           Area.cities,#where(type: "City"),
           :id,
           :area_name_for_lists,
