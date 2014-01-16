@@ -4,8 +4,19 @@
 <p><strong>Special Rules:</strong> <%= @universe.special_rules %></p>
 <p><strong>Pantheon:</strong> <%= @universe.pantheon %></p>
 
+
 <% if @areas_as_city.any? %>
+
   <p>There are <%= pluralize(@areas_as_city.count, "city") %> in this universe.</p>
+  <p><%= @areas_as_city.map(&:attributes) %></p>
+  <p><%= @areas_as_city.in_groups(2).first %></p>
+
+  <% @areas_as_city.each do |f| %>
+    <%#= @areas_as_city.name %>
+    <%#= @areas_as_city[0]=>['name'] %>
+    <%#= @areas_as_city.to(2) %>
+  <% end %>
+
 <% end %>
 
 <h3>Areas</h3>
