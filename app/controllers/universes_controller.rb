@@ -8,6 +8,7 @@ class UniversesController < ApplicationController
     @universe = Universe.find(params[:id])
     @characters = @universe.characters
     @areas = @universe.areas
+    @areas_as_city = @areas.where(type: "City")
   end
 
   def new
