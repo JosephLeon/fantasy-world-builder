@@ -1,6 +1,8 @@
 class Area < ActiveRecord::Base
   belongs_to :universe
   has_many :characters
+  has_many :areas
+  belongs_to :area
   TYPES =  %w(Kingdom City Place)
 
   self.inheritance_column = :changing_the_self_inheritance_column
