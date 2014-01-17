@@ -5,19 +5,16 @@
 <p><strong>Pantheon:</strong> <%= @universe.pantheon %></p>
 
 
-<% if @areas_as_city.any? %>
+  <p>There are <%= pluralize(@kingdoms.count, "kingdom") %> in this universe.</p>
+  <p>There are <%= pluralize(@cities.count, "city") %> in this universe.</p>
+  <p>There are <%= pluralize(@places.count, "place") %> in this universe.</p>
 
-  <p>There are <%= pluralize(@areas_as_city.count, "city") %> in this universe.</p>
-  <p><%= @areas_as_city.map(&:attributes) %></p>
-  <p><%= @areas_as_city.in_groups(2).first %></p>
 
-  <% @areas_as_city.each do |f| %>
-    <%#= @areas_as_city.name %>
-    <%#= @areas_as_city[0]=>['name'] %>
-    <%#= @areas_as_city.to(2) %>
-  <% end %>
+  <p><%= @cities.first %></p>
+  <p><%#= @cities.map(&:attributes) %></p>
+  <p><%= @formatted_data %></p>
+  <p><%= @formatted_data_city %></p>
 
-<% end %>
 
 <h3>Areas</h3>
 <% if @universe.areas.any? %>

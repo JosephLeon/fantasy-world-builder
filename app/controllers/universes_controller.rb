@@ -8,7 +8,36 @@ class UniversesController < ApplicationController
     @universe = Universe.find(params[:id])
     @characters = @universe.characters
     @areas = @universe.areas
-    @areas_as_city = @areas.where(type: "City").to_a
+
+    # set areas by type
+    @kingdoms = @areas.where(type: "Kingdom")
+    @cities = @areas.where(type: "City")
+    @places = @areas.where(type: "Place")
+
+    results = []
+    @kingdoms.each do |kingdom|
+      results.push({ 'name' => kingdom.name, 'id' => kingdom.id })
+    end
+    results.each_with_index do |kingdom, index|
+      kingdom_id = Area.find(kingdom['id'])
+      cities = Area.where(area_id: kingdom_id.id)
+
+
+      results[index]['cities'] = cities.map { |city| { name: city.name, id: city.id } }
+    end
+    @formatted_data = results
+
+    # cityresults = []
+    # @cities.each do |city|
+    #   cityresults.push({ 'name' => city.name, 'id' => city.id })
+    # end
+    # cityresults.each_with_index do |city, index|
+    #   city_id = Area.find(city['id'])
+    #   places = Area.where(area_id: city_id.id)
+    #   results[index]['places'] = places.map { |place| { name: place.name, id: place.id } }
+    # end
+    # @formatted_data_city = cityresults
+
   end
 
   def new
