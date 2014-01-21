@@ -18,15 +18,28 @@ class UniversesController < ApplicationController
     @kingdoms.each do |kingdom|
       results.push({ 'name' => kingdom.name, 'id' => kingdom.id })
     end
+    # @cities.each do |city|
+    #   results.push({ 'name' => city.name, 'id' => city.id })
+    # end
     results.each_with_index do |kingdom, index|
       kingdom_id = Area.find(kingdom['id'])
       cities = Area.where(area_id: kingdom_id.id)
-
-
       results[index]['cities'] = cities.map { |city| { name: city.name, id: city.id } }
+
+      cities.each do |city|
+        city_id = Area.find(city[:id])
+        places = Area.where(area_id: city[:id])
+        results[index]['places'] = places.map { |place| { name: place.name, id: place.id } }
+        # results.push({'name' => place[:name]})
+        # places = Area.where(area_id: city.id)
+      end
+
     end
     @formatted_data = results
 
+    # city_id = Area.find(cities['id'])
+    # places = Area.where(area_id: city_id.id)
+    #
     # cityresults = []
     # @cities.each do |city|
     #   cityresults.push({ 'name' => city.name, 'id' => city.id })
