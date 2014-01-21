@@ -10,10 +10,32 @@
   <p>There are <%= pluralize(@places.count, "place") %> in this universe.</p>
 
 
-  <p><%= @cities.first %></p>
+  <p><%#= @cities.first %></p>
   <p><%#= @cities.map(&:attributes) %></p>
   <p><%= @formatted_data %></p>
-  <p><%= @formatted_data_city %></p>
+
+  <!-- use partial instead -->
+  <% @formatted_data.each do |kingdom| %>
+    <ul>
+      <li>
+        <%= kingdom %>
+        <% kingdom.each do |city|%>
+          <ul>
+            <li>
+              <%= city %>
+              <% city.each do |data|%>
+                <ul>
+                  <li>
+                    <%= data %>
+                  </li>
+                </ul>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
 
 
 <h3>Areas</h3>
