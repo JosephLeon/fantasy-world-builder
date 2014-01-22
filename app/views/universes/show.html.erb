@@ -9,32 +9,23 @@
   <p>There are <%= pluralize(@cities.count, "city") %> in this universe.</p>
   <p>There are <%= pluralize(@places.count, "place") %> in this universe.</p>
 
-
-  <p><%#= @cities.first %></p>
-  <p><%#= @cities.map(&:attributes) %></p>
   <p><%= @formatted_data %></p>
 
   <!-- use partial instead -->
   <% @formatted_data.each do |kingdom| %>
-    <ul>
-      <li>
-        <%= kingdom %>
-        <% kingdom.each do |city|%>
-          <ul>
-            <li>
-              <%= city %>
-              <% city.each do |data|%>
-                <ul>
-                  <li>
-                    <%= data %>
-                  </li>
-                </ul>
+    <ul><li>
+      <%= kingdom.first.second %>
+      <% kingdom.each do |city| %>
+          <% if city[0] == 'cities' %>
+            <ul><li>
+              <%= city[1].first[:name] %>
+              <% city.each do |place| %>
+
               <% end %>
-            </li>
-          </ul>
-        <% end %>
-      </li>
-    </ul>
+            </li></ul>
+          <% end %>
+      <% end %>
+    </li></ul>
   <% end %>
 
 
