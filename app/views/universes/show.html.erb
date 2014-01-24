@@ -11,31 +11,34 @@
 
   <p><%#= @formatted_areas_by_relationship %></p>
 
-  <% @formatted_areas_by_relationship.each do |kingdom| %>
-    <ul><li>
-      <%= kingdom.first.second %> <!-- renders kingdom name -->
-      <% kingdom.each do |city| %>
-        <% if city[0] == 'cities' %> <!-- get rid of unwanted data -->
-          <% @cities_clean = city.second %>
-          <% @cities_clean.each do |cities| %>
-            <ul><li>
-              <%= cities.first.second %>
-              <% cities.each do |place| %>
-                <% if place[0] == 'places' %> <!-- get rid of unwanted data -->
-                  <% @places_clean = place.second %>
-                  <% @places_clean.each do |places| %>
-                    <ul><li>
-                      <%= places.first.second %>
-                    </li></ul>
+  <div id="area-foldout">
+    <% @formatted_areas_by_relationship.each do |kingdom| %>
+      <ul class="kingdoms">
+        <span class="parent-click"><%= kingdom.first.second %></span> <!-- renders kingdom name -->
+        <li>
+        <% kingdom.each do |city| %>
+          <% if city[0] == 'cities' %> <!-- get rid of unwanted data -->
+            <% @cities_clean = city.second %>
+            <% @cities_clean.each do |cities| %>
+              <ul class="cities"><li>
+                <%= cities.first.second %>
+                <% cities.each do |place| %>
+                  <% if place[0] == 'places' %> <!-- get rid of unwanted data -->
+                    <% @places_clean = place.second %>
+                    <% @places_clean.each do |places| %>
+                      <ul class="places"><li>
+                        <%= places.first.second %>
+                      </li></ul>
+                    <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
-            </li></ul>
-          <% end %>
-        <% end %> <!-- end if / city[0] == 'cities' -->
-      <% end %>
-    </li></ul>
-  <% end %>
+              </li></ul>
+            <% end %>
+          <% end %> <!-- end if / city[0] == 'cities' -->
+        <% end %>
+      </li></ul>
+    <% end %>
+  </div>
 
 
 <h3>Areas</h3>

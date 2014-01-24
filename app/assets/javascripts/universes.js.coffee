@@ -1,3 +1,20 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+ready = ->
+
+  console.log ('test')
+
+  # $('.kingdoms').children().find('li').hide()
+  $('.kingdoms li').first().hide()
+
+
+  $ ->
+    $('.parent-click').click ->
+      childLi = $(this).next('li')
+      childLi.slideToggle("fast")
+
+  # $ ->
+  #   $('.cities').click ->
+  #     childLi = $(this).children().find('li')
+  #     childLi.slideToggle("fast")
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
