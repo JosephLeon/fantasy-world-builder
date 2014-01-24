@@ -9,22 +9,30 @@
   <p>There are <%= pluralize(@cities.count, "city") %> in this universe.</p>
   <p>There are <%= pluralize(@places.count, "place") %> in this universe.</p>
 
-  <p><%= @formatted_areas_by_relationship %></p>
+  <p><%#= @formatted_areas_by_relationship %></p>
 
   <% @formatted_areas_by_relationship.each do |kingdom| %>
     <ul><li>
       <%= kingdom.first.second %> <!-- renders kingdom name -->
       <% kingdom.each do |city| %>
-
-        <% if city[0] == 'cities' %>
-          <ul><li>
-            <%= city %>
-            <%#= @cities_clean = city.second %>
-            <%# @cities_clean.each do |cities| %>
-              <%#= cities %>
-            <%# end %>
-          </li></ul>
-        <% end %>
+        <% if city[0] == 'cities' %> <!-- get rid of unwanted data -->
+          <% @cities_clean = city.second %>
+          <% @cities_clean.each do |cities| %>
+            <ul><li>
+              <%= cities.first.second %>
+              <% cities.each do |place| %>
+                <% if place[0] == 'places' %> <!-- get rid of unwanted data -->
+                  <% @places_clean = place.second %>
+                  <% @places_clean.each do |places| %>
+                    <ul><li>
+                      <%= places.first.second %>
+                    </li></ul>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </li></ul>
+          <% end %>
+        <% end %> <!-- end if / city[0] == 'cities' -->
       <% end %>
     </li></ul>
   <% end %>
