@@ -14,27 +14,64 @@ class UniversesController < ApplicationController
     @cities = @areas.where(type: "City")
     @places = @areas.where(type: "Place")
 
-    results = []
-    @kingdoms.each do |kingdom|
-      results.push({ 'name' => kingdom.name, 'id' => kingdom.id })
-    end
+    # results = []
+    # @kingdoms.each do |kingdom|
+    #   results.push({ 'name' => kingdom.name, 'id' => kingdom.id })
+    # end
 
-    results.each_with_index do |kingdom, index|
-      kingdom_id = Area.find(kingdom['id'])
-      cities = Area.where(area_id: kingdom_id.id)
-      results[index]['cities'] = cities.map { |city| { name: city.name, id: city.id } }
-      # find the places belonging to that city
+    formatted_areas_by_relationship = []
+    @kingdoms.each do |kingdom|
+      # create array of cities belonging to kingdom
+      cities = Area.where(area_id: kingdom.id)
+      cities_in_kingdom = []
       cities.each do |city|
-        city_id = Area.find(city[:id])
-        places = Area.where(area_id: city[:id])
-        results[index]['cities'].each do |place|
-          place['places'] = places.map { |place| { name: place.name, id: place.id } }
+        # create array of places belonging to city
+        places = Area.where(area_id: city.id)
+        places_in_city = []
+        places.each do |place|
+          places_in_city.push({
+            'name' => place.name,
+            'id' => place.id
+          })
         end
-        #[0]['places'] = places.map { |place| { name: place.name, id: place.id } }
-        # results[index]['places'] = places.map { |place| { name: place.name, id: place.id } }
+        cities_in_kingdom.push({
+          'name' => city.name,
+          'id' => city.id,
+          'places' => Array.new(places_in_city)
+        })
       end
+      formatted_areas_by_relationship.push({
+        'name' => kingdom.name,
+        'id' => kingdom.id,
+        'cities' => Array.new(cities_in_kingdom)
+      })
     end
-    @formatted_data = results
+    @formatted_areas_by_relationship = formatted_areas_by_relationship
+
+    # places_with_id = []
+    # @places.each do |place|
+    #   places_with_id.push({
+    #     'name' => place.name,
+    #     'id' => place.id,
+    #     'area_id' => place.area_id
+    #   })
+    # end
+    # @formatted_places = places_with_id
+
+    # results.each_with_index do |kingdom, index|
+    #   kingdom_id = Area.find(kingdom['id'])
+    #   cities = Area.where(area_id: kingdom_id.id)
+    #   results[index]['cities'] = cities.map { |city| { name: city.name, id: city.id } }
+    #   # find the places belonging to that city
+    #   cities.each do |city|
+    #     city_id = Area.find(city[:id])
+    #     places = Area.where(area_id: city[:id])
+    #     results[index]['cities'].each do |place|
+    #       place['places'] = places.map { |place| { name: place.name, id: place.id } }
+    #     end
+    #   end
+    # end
+    # @formatted_data = results
 
   end
 
