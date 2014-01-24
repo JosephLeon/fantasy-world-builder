@@ -13,9 +13,8 @@
 
   <div id="area-foldout">
     <% @formatted_areas_by_relationship.each do |kingdom| %>
-      <ul class="kingdoms">
-        <span class="parent-click"><%= kingdom.first.second %></span> <!-- renders kingdom name -->
-        <li>
+      <ul class="kingdoms"><li>
+        <%= kingdom.first.second %> <!-- renders kingdom name -->
         <% kingdom.each do |city| %>
           <% if city[0] == 'cities' %> <!-- get rid of unwanted data -->
             <% @cities_clean = city.second %>
