@@ -1,5 +1,5 @@
-<% @title = "Edit Area" %>
-<p><%= @area.attributes.inspect %></p>
+<% @title = "Edit " + @area.name %>
+<!-- <p><%#= @area.attributes.inspect %></p> -->
 <%= form_for(@area) do |f| %>
   <%#= render 'shared/character_error_messages' %>
 
@@ -40,7 +40,10 @@
     <%= f.label :notes %>
     <%= f.text_area :notes %>
     <%= f.label :map %>
-    <%= f.text_field :map %>
+    <%= f.file_field :map %>
+    <% if @area.map? %>
+      <img src="<%= @area.map %>" alt="">
+    <% end %>
 
   </div>
 

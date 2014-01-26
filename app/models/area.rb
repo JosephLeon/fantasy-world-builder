@@ -4,6 +4,7 @@ class Area < ActiveRecord::Base
   has_many :areas
   belongs_to :area
   TYPES =  %w(Kingdom City Place)
+  mount_uploader :map, MapUploader
 
   self.inheritance_column = :changing_the_self_inheritance_column
 
