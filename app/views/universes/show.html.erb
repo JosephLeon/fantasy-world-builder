@@ -4,58 +4,39 @@
 <p><strong>Special Rules:</strong> <%= @universe.special_rules %></p>
 <p><strong>Pantheon:</strong> <%= @universe.pantheon %></p>
 
+<h3>Areas</h3>
 
-  <p>There are <%= pluralize(@kingdoms.count, "kingdom") %> in this universe.</p>
-  <p>There are <%= pluralize(@cities.count, "city") %> in this universe.</p>
-  <p>There are <%= pluralize(@places.count, "place") %> in this universe.</p>
-
-  <p><%#= @formatted_areas_by_relationship %></p>
+  <p>There are <%= pluralize(@kingdoms.count, "kingdom") %>, <%= pluralize(@cities.count, "city") %> and <%= pluralize(@places.count, "place") %> in this universe. Below is a tree of areas; kingdoms being top, then their cities and the cities places.</p>
 
   <div id="area-foldout">
     <% @formatted_areas_by_relationship.each do |kingdom| %>
       <ul class="kingdoms"><li>
-        <%= kingdom.first.second %> <!-- renders kingdom name -->
+        <%= link_to kingdom['name'], area_path(kingdom['id']) %> <!-- renders kingdom name -->
         <% kingdom.each do |city| %>
           <% if city[0] == 'cities' %> <!-- get rid of unwanted data -->
+            <ul class="cities">
             <% @cities_clean = city.second %>
             <% @cities_clean.each do |cities| %>
-              <ul class="cities"><li>
-                <%= cities.first.second %>
+              <li>
+                <%= link_to cities['name'], area_path(cities['id'])  %>
                 <% cities.each do |place| %>
                   <% if place[0] == 'places' %> <!-- get rid of unwanted data -->
-                    <% @places_clean = place.second %>
-                    <% @places_clean.each do |places| %>
-                      <ul class="places"><li>
-                        <%= places.first.second %>
-                      </li></ul>
-                    <% end %>
+                    <ul class="places">
+                      <% @places_clean = place.second %>
+                      <% @places_clean.each do |places| %>
+                        <li><%= link_to places['name'], area_path(places['id']) %></li>
+                      <% end %>
+                    </ul>
                   <% end %>
                 <% end %>
-              </li></ul>
+              </li>
             <% end %>
+          </ul>
           <% end %> <!-- end if / city[0] == 'cities' -->
         <% end %>
       </li></ul>
     <% end %>
   </div>
-
-
-<h3>Areas</h3>
-<% if @universe.areas.any? %>
-  <p>There are <%= pluralize(@universe.areas.count, "area") %> in this universe.</p>
-  <table class="table">
-    <tr>
-        <th>Name</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    <%= render @areas %>
-  </table>
-<% else %>
-  <p>There are no areas in this universe, catastrophe!</p>
-<% end %>
 
 <h3>Characters</h3>
 <% if @universe.characters.any? %>
