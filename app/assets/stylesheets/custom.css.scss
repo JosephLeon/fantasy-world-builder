@@ -120,6 +120,31 @@ body {
       margin-bottom: 7px;
     }
   }
+  .brown-button {
+    @include clear;
+    width: auto;
+    border: 0;
+    background: #3a2e1b;
+    padding: 7px 13px;
+    text-transform: uppercase;
+    color: $paper;
+    font: {
+      family: 'Old Standard TT', serif;
+      size: 24px;
+    }
+    cursor: pointer;
+    border: 1px solid $brown;
+    border-radius: 3px;
+    float: right;
+    font-size: 20px;
+    a, a:link, a:visited {
+      color: $paper;
+      font: {
+        family: 'Old Standard TT', serif;
+        size: 24px;
+      }
+    }
+  }
 }
 .leftcol {
   @include grid(6,1);

@@ -9,6 +9,7 @@ group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
   gem 'meta_request'
+  gem 'carrierwave'
 end
 
 group :development do

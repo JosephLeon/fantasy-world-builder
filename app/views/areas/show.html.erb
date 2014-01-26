@@ -1,11 +1,11 @@
 <% @title = @area.name %>
-<p><%= @area.attributes.inspect %></p>
-<p><%= link_to "Edit", edit_area_path(@area) %></p>
+<!-- <p><%#= @area.attributes.inspect %></p> -->
+<p class="clear"><%= link_to "Edit", edit_area_path(@area), class: "brown-button block" %></p>
 <p><strong>Description:</strong> <%= @area.description %></p>
 <p><strong>Environment:</strong> <%= @area.environment %></p>
 <p><strong>Notes:</strong> <%= @area.notes %></p>
 <p><strong>Map:</strong> <%= @area.map %></p>
-<p><strong>Area Type:</strong> <%#= @area.area_type %></p>
+<p><strong>Area Type:</strong> <%= @area.type %></p>
 
 <% if @universe %>
 <p><strong>Universe:</strong> <%= link_to @universe.name, universe_path(@universe) %></p>
