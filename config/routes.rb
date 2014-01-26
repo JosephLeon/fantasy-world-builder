@@ -3,9 +3,7 @@ WorldBuilder::Application.routes.draw do
   resources :characters,
             :universes,
             :items,
-            :areas,
-            :cities,
-            :area_relationships
+            :areas
 
   root 'static_pages#home'
   match '/',                to: 'static_pages#home',    via: 'get'

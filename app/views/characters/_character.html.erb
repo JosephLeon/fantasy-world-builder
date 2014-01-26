@@ -1,6 +1,9 @@
     <tr>
       <td><%= link_to character.name, character %></td>
+      <td><%= character.career %></td>
+      <td><%= character.level %></td>
       <td><%= link_to "Edit", edit_character_path(character) %></td>
       <td><%= link_to "Remove", character, method: :delete, data: { confirm: "Are you sure?" } %></td>
     </tr>
+    <%#= character.attributes.inspect %>
 
