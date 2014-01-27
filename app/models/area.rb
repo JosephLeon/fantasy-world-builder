@@ -1,4 +1,5 @@
 class Area < ActiveRecord::Base
+  # require 'carrierwave/orm/activerecord'
   belongs_to :universe
   has_many :characters
   has_many :areas

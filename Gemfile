@@ -10,6 +10,7 @@ group :development, :test do
   gem 'guard-rspec', '2.5.0'
   gem 'meta_request'
   gem 'carrierwave'
+  gem 'rmagick', '2.13.2'
 end
 
 group :development do

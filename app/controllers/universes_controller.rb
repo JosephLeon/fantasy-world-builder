@@ -80,6 +80,7 @@ class UniversesController < ApplicationController
       params.require(:universe).permit(:name,
         :description,
         :special_rules,
-        :pantheon)
+        :pantheon,
+        :map)
     end
 end
