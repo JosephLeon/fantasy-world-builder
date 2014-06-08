@@ -77,22 +77,6 @@ ActiveRecord::Schema.define(version: 20140127025231) do
     t.integer  "area_id"
   end
 
-  create_table "cities", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.string   "map"
-    t.string   "notes"
-    t.integer  "population"
-    t.string   "economy"
-    t.string   "building_style"
-    t.integer  "year_founded"
-    t.string   "resources"
-    t.string   "government"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "universe_id"
-  end
-
   create_table "items", force: true do |t|
     t.string   "name"
     t.text     "appearance"
